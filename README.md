@@ -1,7 +1,7 @@
 # Svelte UI
 Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and web components. 
 
-## Depenendies 
+## Dependencies 
 This UI library is based on 
 - Svelte 5 Beta
 - DaisyUI 4.x
