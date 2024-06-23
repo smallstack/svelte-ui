@@ -1,6 +1,31 @@
 {
 	"name": "@smallstack/svelte-ui",
 	"version": "0.0.1",
+	"description": "Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and as web components.",
+	"author": {
+		"name": "smallstack GmbH",
+		"email": "contact@smallstack.com"
+	},
+	"bugs": {
+		"url": "https://github.com/smallstack/svelte-ui/issues"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"homepage": "https://svelte-ui.com",
+	"keywords": [
+		"svelte",
+		"daisyui",
+		"webcomponents",
+		"library",
+		"ui",
+		"tailwindcss"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/smallstack/svelte-ui"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
