@@ -9,6 +9,11 @@
 			<a class="" href="/">
 				<img src="/svelte-ui-logo-200.png" alt="Svelte UI Logo" />
 			</a>
+			<img
+				src="https://img.shields.io/github/package-json/v/smallstack/svelte-ui
+"
+				alt="Version"
+			/>
 		</div>
 
 		<div class="flex flex-col gap-1">
@@ -37,12 +42,38 @@
 	</div>
 	<div class="w-full rounded-2xl p-5 text-base text-black m-8">
 		<div class="flex flex-row justify-end items-center mb-8 gap-4">
+			<a href="https://www.npmjs.com/package/@smallstack/svelte-ui" target="_blank">
+				<img
+					src="https://img.shields.io/npm/dw/%40smallstack%2Fsvelte-ui?logo=npm&label=esm"
+					alt="npm downloads"
+				/>
+			</a>
+			<!-- test status -->
 			<img
 				src="https://github.com/smallstack/svelte-ui/actions/workflows/ci.yml/badge.svg"
 				alt="GitHub Workflow Status"
 			/>
+			<!-- stars -->
 			<a href="https://github.com/smallstack/svelte-ui" target="_blank">
-				<i class="fab fa-github text-2xl"></i>
+				<img
+					src="https://img.shields.io/github/stars/smallstack/svelte-ui?style=flat"
+					alt="GitHub stars"
+				/>
+			</a>
+			<!-- activity -->
+			<a href="https://github.com/smallstack/svelte-ui" target="_blank">
+				<img
+					src="https://img.shields.io/github/commit-activity/w/smallstack/svelte-ui/main?style=flat
+"
+					alt="Community activity"
+				/>
+			</a>
+			<!-- license -->
+			<a href="https://github.com/smallstack/svelte-ui" target="_blank">
+				<img
+					src="https://img.shields.io/github/license/smallstack/svelte-ui?style=flat"
+					alt="License"
+				/>
 			</a>
 		</div>
 		<slot></slot>
