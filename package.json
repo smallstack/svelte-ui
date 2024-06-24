@@ -29,7 +29,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
-		"build:wc": "vite build && vite -c vite.webcomponents.config.js build",
+		"build:wc": "npm run build && npm run build:wc:form-inputs",
+		"build:wc:form-inputs": "vite build && vite -c vite.form-inputs.wc.config build",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package",
@@ -40,6 +41,7 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
+		"version": "npm run build:wc",
 		"release:patch": "npm version patch && git push && git push --tags",
 		"release:minor": "npm version minor && git push && git push --tags"
 	},
