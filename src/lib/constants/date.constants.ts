@@ -1,0 +1,15 @@
+export const ONE_SECOND = 1000;
+export const ONE_MINUTE = 1000 * 60;
+export const ONE_HOUR = ONE_MINUTE * 60;
+export const ONE_DAY = ONE_HOUR * 24;
+export const ONE_WEEK = ONE_DAY * 7;
+export const DEFAULT_GERMAN_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+export const DEFAULT_HTML5_DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm";
+export const DEFAULT_HTML5_DATE_FORMAT = "yyyy-MM-dd";
+export const DEFAULT_GERMAN_DATE_STRING_FORMAT = "yyyy-MM-dd";
+export const DEFAULT_GERMAN_HUMAN_DATE_TIME_FORMAT = "dd.MM.yyyy HH:mm";
+export const DEFAULT_GERMAN_HUMAN_DATE_TIME_FORMAT_WITH_SECONDS = "dd.MM.yyyy HH:mm:ss";
+export const DEFAULT_GERMAN_HUMAN_DATE_FORMAT = "dd.MM.yyyy";
+export const DATE_TIME_ISO_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
+export const DATE_TIME_ISO_FORMAT_URL_CONFORM = "yyyy-MM-dd-HH-mm-ss";
+export const DATE_TIME_ISO_FORMAT_FILENAME_CONFORM = "yyyy-MM-dd-HH mm-ss";

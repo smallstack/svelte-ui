@@ -11,10 +11,13 @@
 
 <ComponentSubHeader title="Dependencies"></ComponentSubHeader>
 This UI library is based on
-<ul>
+<div class="flex flex-col gap-2 p-4">
 	<li>Svelte 5</li>
 	<li>DaisyUI 4.x</li>
-</ul>
+	<li>Free Fontawesome Icons</li>
+	<li>@floating-ui/dom</li>
+	<li>date-fns</li>
+</div>
 
 <ComponentSubHeader title="Purpose"></ComponentSubHeader>
 We built this library because at the time of creation there were no libraries that supported Svelte 5,

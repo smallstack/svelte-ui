@@ -15,17 +15,17 @@
 	<div role="tablist" class="tabs tabs-lifted mb-4">
 		<input type="radio" name="install-npm-tabs" role="tab" class="tab" aria-label="NPM" checked />
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<ComponentCode>npm install @smallstack/svelte-ui</ComponentCode>
+			<pre>npm install @smallstack/svelte-ui</pre>
 		</div>
 
 		<input type="radio" name="install-npm-tabs" role="tab" class="tab" aria-label="YARN" />
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<ComponentCode>yarn add @smallstack/svelte-ui</ComponentCode>
+			<pre>yarn add @smallstack/svelte-ui</pre>
 		</div>
 
 		<input type="radio" name="install-npm-tabs" role="tab" class="tab" aria-label="PNPM" />
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<ComponentCode>pnpm add @smallstack/svelte-ui</ComponentCode>
+			<pre>pnpm add @smallstack/svelte-ui</pre>
 		</div>
 	</div>
 
@@ -43,22 +43,21 @@
 			checked
 		/>
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<ComponentCode>
-				&lt;script type=&quot;module&quot; src=&quot;https://cdn.skypack.dev/@smallstack/svelte-ui&quot;&gt;&lt;/script&gt;
+			<pre>&lt;script type=&quot;module&quot; src=&quot;https://cdn.skypack.dev/@smallstack/svelte-ui&quot;&gt;&lt;/script&gt;
 &lt;sui-table&gt;&lt;/sui-table&gt;
-			</ComponentCode>
+			</pre>
 		</div>
 		<input type="radio" name="install-wc-tabs" role="tab" class="tab" aria-label="Angular" />
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<ComponentCode>TBD</ComponentCode>
+			<pre>TBD</pre>
 		</div>
 		<input type="radio" name="install-wc-tabs" role="tab" class="tab" aria-label="React" />
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<ComponentCode>TBD</ComponentCode>
+			<pre>TBD</pre>
 		</div>
 		<input type="radio" name="install-wc-tabs" role="tab" class="tab" aria-label="Vue" />
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<ComponentCode>TBD</ComponentCode>
+			<pre>TBD</pre>
 		</div>
 	</div>
 </div>

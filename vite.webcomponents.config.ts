@@ -1,6 +1,12 @@
 import { svelte } from "@sveltejs/vite-plugin-svelte";
-import { defineConfig } from "vite";
+import { readFileSync } from "fs";
 import { resolve } from "path";
+import { fileURLToPath } from "url";
+import { defineConfig } from "vite";
+
+const file = fileURLToPath(new URL("package.json", import.meta.url));
+const json = readFileSync(file, "utf8");
+const pkg = JSON.parse(json);
 
 export default defineConfig({
 	build: {
@@ -10,7 +16,7 @@ export default defineConfig({
 			fileName: "table",
 			formats: ["iife"]
 		},
-		outDir: "dist-js"
+		outDir: "static/cdn/web-components/" + pkg.version
 	},
 	plugins: [svelte()]
 });
