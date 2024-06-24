@@ -1,3 +1,5 @@
+<svelte:options customElement="sui-date-time-range-input" />
+
 <script lang="ts">
 	import { DEFAULT_GERMAN_HUMAN_DATE_TIME_FORMAT_WITH_SECONDS } from "$lib/constants/date.constants.js";
 	import Overlay from "$lib/overlay/Overlay.svelte";

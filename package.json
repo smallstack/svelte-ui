@@ -47,9 +47,9 @@
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		},
-		"./table": {
+		"./form-inputs": {
 			"types": "./dist/index.d.ts",
-			"svelte": "./dist/table.js"
+			"svelte": "./dist/form-inputs.js"
 		}
 	},
 	"files": [

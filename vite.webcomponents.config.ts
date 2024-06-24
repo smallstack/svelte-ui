@@ -11,9 +11,9 @@ const pkg = JSON.parse(json);
 export default defineConfig({
 	build: {
 		lib: {
-			entry: resolve(__dirname, "dist/table.js"),
-			name: "Table",
-			fileName: "table",
+			entry: resolve(__dirname, "dist/form-inputs.js"),
+			name: "FormInputs",
+			fileName: "form-inputs",
 			formats: ["iife"]
 		},
 		outDir: "static/cdn/web-components/" + pkg.version

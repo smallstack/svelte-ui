@@ -1,3 +1,5 @@
+<svelte:options customElement="sui-overlay" />
+
 <script lang="ts">
 	import { computePosition, flip, offset, shift, type Placement } from "@floating-ui/dom";
 	import { onMount } from "svelte";

@@ -20,9 +20,9 @@
 
 		<div class="flex flex-col gap-1">
 			<div class="text-lg font-semibold tracking-wider">FORMS</div>
-			<div class="pl-3">
+			<!-- <div class="pl-3">
 				<a href="/forms/input">Input</a>
-			</div>
+			</div> -->
 			<div class="pl-3">
 				<a href="/forms/date-time-range-input">Date Time Range Input</a>
 			</div>

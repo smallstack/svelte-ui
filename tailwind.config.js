@@ -4,6 +4,7 @@ import daisyui from "daisyui";
 export default {
 	content: ["./src/**/*.{html,svelte,js,ts}"],
 	daisyui: {
+		logs: false,
 		themes: [
 			{
 				svelte: {
