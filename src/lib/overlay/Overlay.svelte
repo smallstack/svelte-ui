@@ -46,6 +46,6 @@
 <button onclick={(e) => openOverlay({ trigger: e.target as HTMLElement })}>
 	<slot name="trigger"></slot>
 </button>
-<span class="hidden absolute" bind:this={overlay}>
+<span class="hidden absolute z-50" bind:this={overlay}>
 	<slot name="overlay"></slot>
 </span>

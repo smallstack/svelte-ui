@@ -1,7 +1,21 @@
-<svelte:options customElement="sui-date-time-range-input" />
+<svelte:options
+	customElement={{
+		tag: "sui-date-time-range-input",
+		shadow: "none",
+		props: {
+			from: { reflect: true, type: "Number" },
+			to: { reflect: true, type: "Number" },
+			max: { reflect: true, type: "Number" },
+			min: { reflect: true, type: "Number" }
+		}
+	}}
+/>
 
 <script lang="ts">
-	import { DEFAULT_GERMAN_HUMAN_DATE_TIME_FORMAT_WITH_SECONDS } from "$lib/constants/date.constants.js";
+	import {
+		DEFAULT_GERMAN_HUMAN_DATE_TIME_FORMAT_WITH_SECONDS,
+		DEFAULT_HTML5_DATE_TIME_FORMAT
+	} from "$lib/constants/date.constants.js";
 	import Overlay from "$lib/overlay/Overlay.svelte";
 	import {
 		add,
@@ -36,46 +50,55 @@
 		return to !== undefined ? format(to, DEFAULT_GERMAN_HUMAN_DATE_TIME_FORMAT_WITH_SECONDS) : "";
 	});
 
+	function syncHtmlNative() {
+		inputFromPicker.value = format(from, DEFAULT_HTML5_DATE_TIME_FORMAT);
+		inputToPicker.value = format(to, DEFAULT_HTML5_DATE_TIME_FORMAT);
+	}
+
 	function setToDay(relative: number): void {
 		from = add(startOfDay(new Date()), { days: relative }).valueOf();
 		to = add(endOfDay(new Date()), { days: relative }).valueOf();
+		syncHtmlNative();
 		overlay.closeOverlay();
 	}
 
 	function setToWeek(relative: number): void {
 		from = add(startOfWeek(new Date(), { locale: de }), { weeks: relative }).valueOf();
 		to = add(endOfWeek(new Date(), { locale: de }), { weeks: relative }).valueOf();
+		syncHtmlNative();
 		overlay.closeOverlay();
 	}
 
 	function setToMonth(relative: number): void {
 		from = add(startOfMonth(new Date()), { months: relative }).valueOf();
 		to = add(endOfMonth(new Date()), { months: relative }).valueOf();
+		syncHtmlNative();
 		overlay.closeOverlay();
 	}
 
 	function reset() {
 		from = undefined;
 		to = undefined;
+		syncHtmlNative();
 		overlay.closeOverlay();
 	}
 </script>
 
 <input
 	bind:this={inputFromPicker}
-	bind:value={from}
 	type="datetime-local"
 	placeholder="von"
 	class="invisible absolute"
 	{max}
+	onchange={() => (from = new Date(inputFromPicker.value).valueOf())}
 />
 <input
 	bind:this={inputToPicker}
-	bind:value={to}
 	type="datetime-local"
 	placeholder="bis"
 	class="invisible absolute"
 	{min}
+	onchange={() => (to = new Date(inputToPicker.value).valueOf())}
 />
 <div class="join w-full">
 	<input

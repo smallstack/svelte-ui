@@ -1,0 +1,21 @@
+<html data-theme="light">
+	<head>
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@4.12.7/dist/full.min.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="/cdn/web-components/0.1.6/form-inputs.iife.js"></script>
+		<script src="https://kit.fontawesome.com/609b239524.js" crossorigin="anonymous"></script>
+	</head>
+</html>
+<sui-date-time-range-input from="1685599200000"></sui-date-time-range-input>
+
+<div>Try setting the value using the button below:</div>
+<button
+	class="btn btn-wide btn-xs"
+	onclick="document.querySelector('sui-date-time-range-input').setAttribute('to', 1685599200000)"
+>
+	Set to value to 
+</button>

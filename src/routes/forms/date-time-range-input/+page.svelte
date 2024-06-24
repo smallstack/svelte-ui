@@ -24,3 +24,9 @@
 		<DateTimeRangeInput bind:from={fromDefault} bind:to={toDefault} />
 	</div>
 </ComponentPlayground>
+
+<ComponentPlayground title="As Web Component">
+	<div class="max-w-md">
+		<iframe src="/wc-examples/date-time-range-input.html" width="600px" height="400px" title="Date Time Range Input as web component"></iframe>
+	</div>
+</ComponentPlayground>
