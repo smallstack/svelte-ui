@@ -1,6 +1,6 @@
 <div align="center">
     <img src="https://svelte-ui.com/svelte-ui-logo-200.png"><br>
-    <span style="font-size: 40px">SVELTE UI</span><br>
+    <span style="font-size: 60px">SVELTE UI</span><br><br>
     <div align="center">
         <img src="https://img.shields.io/npm/dw/%40smallstack%2Fsvelte-ui?logo=npm&label=esm" alt="npm downloads" />
         <img
