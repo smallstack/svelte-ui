@@ -8,8 +8,7 @@
 				alt="GitHub Workflow Status"
 			/>
         <img
-                src="https://img.shields.io/github/commit-activity/w/smallstack/svelte-ui/main?style=flat
-"
+                src="https://img.shields.io/github/commit-activity/w/smallstack/svelte-ui/main?style=flat"
                 alt="Community activity"
             />
         <img
