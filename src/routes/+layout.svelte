@@ -7,7 +7,7 @@
 	<div class="bg-gray-200 w-80 rounded-2xl p-5 flex flex-col gap-8 m-8">
 		<div class="w-full flex flex-col justify-center items-center text-sm tracking-wider mb-8">
 			<a class="" href="/">
-				<img src="/svelte-ui-logo-200.png" alt="Svelte UI Logo" />
+				<img src="/svelte-ui-logo.svg" alt="Svelte UI Logo" width="160px" />
 			</a>
 			<img
 				src="https://img.shields.io/github/package-json/v/smallstack/svelte-ui
