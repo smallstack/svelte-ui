@@ -41,7 +41,7 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-		"version": "npm run build:wc",
+		"version": "npm run build:wc && git add *",
 		"release:patch": "npm version patch && git push && git push --tags",
 		"release:minor": "npm version minor && git push && git push --tags"
 	},
