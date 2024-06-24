@@ -40,7 +40,8 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-		"release:patch": "npm version patch && git push && git push --tags"
+		"release:patch": "npm version patch && git push && git push --tags",
+		"release:minor": "npm version patch && git push && git push --tags"
 	},
 	"exports": {
 		".": {
