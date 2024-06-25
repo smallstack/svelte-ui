@@ -29,9 +29,10 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
-		"build:wc": "npm run build && npm run build:wc:form-inputs && npm run build:wc:overlay",
-		"build:wc:form-inputs": "vite build && vite -c vite.form-inputs.wc.config build",
-		"build:wc:overlay": "vite build && vite -c vite.overlay.wc.config build",
+		"build:wc": "npm run build && npm run build:wc:form-inputs && npm run build:wc:overlay && npm run build:wc:layout",
+		"build:wc:form-inputs": "vite build && vite -c .wc-configs/vite.form-inputs.wc.config build",
+		"build:wc:overlay": "vite build && vite -c .wc-configs/vite.overlay.wc.config build",
+		"build:wc:layout": "vite build && vite -c .wc-configs/vite.layout.wc.config build",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package",

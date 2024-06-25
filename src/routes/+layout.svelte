@@ -3,8 +3,8 @@
 	import "../app.css";
 </script>
 
-<div class="flex flex-row gap-4">
-	<div class="bg-gray-200 w-80 rounded-2xl p-5 flex flex-col gap-8 m-8">
+<div class="flex flex-row">
+	<div class="bg-gray-200 w-80 rounded-2xl p-5 flex flex-col gap-8 m-4">
 		<div class="w-full flex flex-col justify-center items-center text-sm tracking-wider mb-8">
 			<a class="" href="/">
 				<img src="/svelte-ui-logo.svg" alt="Svelte UI Logo" width="160px" />
@@ -38,26 +38,32 @@
 			<div class="pl-3">
 				<a href="/actions/overlay">Overlay</a>
 			</div>
+			<div class="pl-3">
+				<a href="/actions/viewport">In Viewport</a>
+			</div>
 		</div>
 	</div>
-	<div class="w-full rounded-2xl p-5 text-base text-black m-8">
-		<div class="flex flex-row justify-end items-center mb-8 gap-4">
+	<div class="w-full rounded-2xl p-5 text-base text-black m-4 bg-gray-100">
+		<div class="hidden md:flex flex-row flex-wrap justify-end items-center mb-8 gap-4">
 			<a href="https://www.npmjs.com/package/@smallstack/svelte-ui" target="_blank">
 				<img
 					src="https://img.shields.io/npm/dw/%40smallstack%2Fsvelte-ui?logo=npm&label=esm"
 					alt="npm downloads"
+					class="h-5"
 				/>
 			</a>
 			<!-- test status -->
 			<img
 				src="https://github.com/smallstack/svelte-ui/actions/workflows/ci.yml/badge.svg"
 				alt="GitHub Workflow Status"
+				class="h-5"
 			/>
 			<!-- stars -->
 			<a href="https://github.com/smallstack/svelte-ui" target="_blank">
 				<img
 					src="https://img.shields.io/github/stars/smallstack/svelte-ui?style=flat"
 					alt="GitHub stars"
+					class="h-5"
 				/>
 			</a>
 			<!-- activity -->
@@ -66,6 +72,7 @@
 					src="https://img.shields.io/github/commit-activity/w/smallstack/svelte-ui/main?style=flat
 "
 					alt="Community activity"
+					class="h-5"
 				/>
 			</a>
 			<!-- license -->
@@ -73,6 +80,7 @@
 				<img
 					src="https://img.shields.io/github/license/smallstack/svelte-ui?style=flat"
 					alt="License"
+					class="h-5"
 				/>
 			</a>
 		</div>
