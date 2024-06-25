@@ -99,5 +99,8 @@
 	"dependencies": {
 		"@floating-ui/dom": "^1.6.5",
 		"date-fns": "^3.6.0"
+	},
+	"volta": {
+		"node": "20.15.0"
 	}
 }
