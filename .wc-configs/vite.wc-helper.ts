@@ -17,8 +17,7 @@ export function wcViteConfig(fileName: string, moduleName: string) {
 				fileName,
 				formats: ["iife"]
 			},
-			outDir: "static/cdn/web-components/" + pkg.version,
-			emptyOutDir: false
+			outDir: "static/cdn/web-components/" + pkg.version + "/" + fileName,
 		},
 		plugins: [svelte()]
 	});
