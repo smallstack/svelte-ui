@@ -4,7 +4,7 @@ import { resolve } from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 
-const file = fileURLToPath(new URL("package.json", import.meta.url));
+const file = fileURLToPath(new URL("../package.json", import.meta.url));
 const json = readFileSync(file, "utf8");
 const pkg = JSON.parse(json);
 
@@ -12,7 +12,7 @@ export function wcViteConfig(fileName: string, moduleName: string) {
 	return defineConfig({
 		build: {
 			lib: {
-				entry: resolve(__dirname, "dist/" + fileName + ".js"),
+				entry: resolve(__dirname,"../dist/" + fileName + ".js"),
 				name: moduleName,
 				fileName,
 				formats: ["iife"]
