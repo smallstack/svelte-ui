@@ -4,7 +4,7 @@
 </script>
 
 <ComponentHeader
-	title="Svelte 5 & DaisyUI Library"
+	title="Svelte UI"
 	description="Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and as web components. 
 "
 />
