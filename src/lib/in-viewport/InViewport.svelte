@@ -1,3 +1,5 @@
+<svelte:options customElement="sui-in-viewport" />
+
 <script lang="ts">
 	import { createEventDispatcher } from "svelte";
 
