@@ -25,6 +25,15 @@
 
 		<div class="flex flex-col gap-1">
 			<div class="text-lg font-semibold tracking-wider">FORMS</div>
+			<div class="pl-3">
+				<a href="/forms/form-container">Form</a>
+			</div>
+			<div class="pl-3">
+				<a href="/forms/form-container">Form Service</a>
+			</div>
+		</div>
+		<div class="flex flex-col gap-1">
+			<div class="text-lg font-semibold tracking-wider">FORM INPUTS</div>
 			<!-- <div class="pl-3">
 				<a href="/forms/input">Input</a>
 			</div> -->
@@ -84,6 +93,7 @@
 				/>
 			</a>
 		</div>
+		<div class="alert alert-warning mb-8">This library is based on Svelte 5 beta versions. Even though these versions are already "release candidates", things might not work well enough for your production usage. Use at own risk.</div>
 		<slot></slot>
 	</div>
 </div>

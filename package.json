@@ -73,6 +73,7 @@
 		"@sveltejs/package": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^8.56.7",
+		"@types/json-schema": "^7.0.15",
 		"@types/node": "^20.14.8",
 		"autoprefixer": "^10.4.19",
 		"daisyui": "^4.12.2",
@@ -98,7 +99,8 @@
 	"type": "module",
 	"dependencies": {
 		"@floating-ui/dom": "^1.6.5",
-		"date-fns": "^3.6.0"
+		"date-fns": "^3.6.0",
+		"json-schema": "^0.4.0"
 	},
 	"volta": {
 		"node": "20.15.0"
