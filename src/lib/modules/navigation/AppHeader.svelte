@@ -5,9 +5,8 @@
 		type AppShellAppHeaderOptions,
 		type AppShellOptions
 	} from "./app-shell-options.js";
-	import type { Navigation } from "./navigation.js";
 
-	let { options, navigation }: { options?: AppShellOptions; navigation?: Navigation } = $props();
+	let { options }: { options?: AppShellOptions } = $props();
 
 	let computedOptions: AppShellAppHeaderOptions = getComputedOptions(options, "appHeader");
 	let showFullscreenMenu = $state(false);
@@ -23,7 +22,7 @@
 	<div
 		class="fixed top-0 left-0 w-full h-full z-50 p-2 text-center"
 		style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor};"
-		transition:fly={{duration: 250}}
+		transition:fly={{ duration: 250 }}
 	>
 		<div class="flex flex-row gap-2 justify-end">
 			<button class="btn btn-ghost" onclick={() => (showFullscreenMenu = !showFullscreenMenu)}>
@@ -43,7 +42,7 @@
 		</a>
 
 		<div class="flex flex-col gap-2">
-			{#each navigation?.entries as entry}
+			{#each computedOptions?.navigation?.entries as entry}
 				<div
 					class="text-2xl p-2"
 					style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor};"

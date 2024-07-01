@@ -1,6 +1,7 @@
 <script lang="ts">
-	import type { AppShellOptions } from "$lib/modules/navigation/app-shell-options.js";
+	import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.js";
 	import AppShell from "$lib/modules/navigation/AppShell.svelte";
+	import { BREAKPOINTS, MD_AND_UP } from "$lib/modules/navigation/breakpoint.service.svelte.js";
 	import type { Navigation } from "$lib/modules/navigation/navigation.js";
 	import "tailwindcss/tailwind.css";
 	import "../app.css";
@@ -67,12 +68,16 @@
 		logoUrl: "/svelte-ui-logo.svg",
 		title: "Svelte UI",
 		sidebar: {
-			show: true,
+			show: MD_AND_UP,
 			width: 256
 		},
 		navbar: {
-			show: true,
+			show: MD_AND_UP,
 			showNavigation: false
+		},
+		appHeader: {
+			show: [BREAKPOINTS.XS, BREAKPOINTS.SM],
+			showMenuTriggerRight: true
 		},
 		navigation
 	};

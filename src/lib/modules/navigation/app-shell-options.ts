@@ -16,25 +16,25 @@ interface AppShellGlobalOptions {
 
 export interface AppShellSidebarOptions extends AppShellGlobalOptions {
 	width?: number;
-	show?: boolean;
+	show?: boolean | string[];
 }
 
 export interface AppShellNavbarOptions extends AppShellGlobalOptions {
-	show?: boolean;
+	show?: boolean | string[];
 	/** show/hide the navigation entries inside the top navbar */
 	showNavigation?: boolean;
 	height?: number;
 }
 
 export interface AppShellAppHeaderOptions extends AppShellGlobalOptions {
-	show?: boolean;
+	show?: boolean | string[];
 	height?: number;
 	showMenuTriggerRight?: boolean;
 	showMenuTriggerLeft?: boolean;
 }
 
 export interface AppShellTabBarOptions extends AppShellGlobalOptions {
-	show?: boolean;
+	show?: boolean | string[];
 	height?: number;
 }
 
@@ -56,6 +56,7 @@ export function getComputedOptions<T>(options: AppShellOptions, navigationProp: 
 	useGlobalValue("title");
 	useGlobalValue("bgColor");
 	useGlobalValue("textColor");
+	useGlobalValue("navigation");
 
 	return base;
 }

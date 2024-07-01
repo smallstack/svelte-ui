@@ -4,8 +4,8 @@
 	import { writable } from "svelte/store";
 	import { APP_SHELL_OPTIONS, type AppShellOptions } from "./app-shell-options.js";
 	import AppHeader from "./AppHeader.svelte";
+	import { breakpointService } from "./breakpoint.service.svelte.js";
 	import Navbar from "./Navbar.svelte";
-	import type { Navigation } from "./navigation.js";
 	import SideNavbar from "./SideNavbar.svelte";
 	import TabBar from "./TabBar.svelte";
 
@@ -51,13 +51,13 @@
 		const appShellOptions = $optionsStore;
 		let newMainContentHeight = windowInnerHeight;
 		let newMainContentWidth = windowInnerWidth;
-		if (appShellOptions?.navbar?.show === true)
+		if (breakpointService.matches(appShellOptions?.navbar?.show))
 			newMainContentHeight -= appShellOptions.navbar.height || 64;
-		if (appShellOptions?.appHeader?.show === true)
+		if (breakpointService.matches(appShellOptions?.appHeader?.show))
 			newMainContentHeight -= appShellOptions.appHeader.height || 64;
-		if (appShellOptions?.tabBar?.show === true)
+		if (breakpointService.matches(appShellOptions?.tabBar?.show))
 			newMainContentHeight -= appShellOptions.tabBar.height || 64;
-		if (appShellOptions?.sidebar?.show === true)
+		if (breakpointService.matches(appShellOptions?.sidebar?.show))
 			newMainContentWidth -= appShellOptions.sidebar.width || 180;
 
 		mainContentHeight = newMainContentHeight;
@@ -74,24 +74,22 @@
 	dispatchWindowResize();
 </script>
 
-<svelte:window onresize={dispatchWindowResize} />
-
 <div class="w-svw h-svh relative">
-	{#if $optionsStore?.appHeader?.show === true}
+	{#if breakpointService.matches($optionsStore?.appHeader?.show)}
 		<AppHeader options={$optionsStore}></AppHeader>
 	{/if}
-	{#if $optionsStore?.navbar?.show === true}
+	{#if breakpointService.matches($optionsStore?.navbar?.show)}
 		<Navbar options={$optionsStore}></Navbar>
 	{/if}
 	<div class="flex flex-row overflow-hidden" style="height: {mainContentHeight}px">
-		{#if $optionsStore?.sidebar?.show === true}
+		{#if breakpointService.matches($optionsStore?.sidebar?.show)}
 			<SideNavbar options={$optionsStore}></SideNavbar>
 		{/if}
 		<div class="overflow-auto" style="height: {mainContentHeight}px; width: {mainContentWidth}px;">
 			{@render children()}
 		</div>
 	</div>
-	{#if $optionsStore?.tabBar?.show === true}
+	{#if breakpointService.matches($optionsStore?.tabBar?.show)}
 		<TabBar options={$optionsStore}></TabBar>
 	{/if}
 </div>
