@@ -1,6 +1,7 @@
 import type { Navigation } from "./navigation.js";
 
 export const APP_SHELL_OPTIONS = "appShellOptions";
+export const APP_SHELL_STATS = "appShellStats";
 
 interface AppShellGlobalOptions {
 	logoUrl?: string;
@@ -29,13 +30,15 @@ export interface AppShellNavbarOptions extends AppShellGlobalOptions {
 export interface AppShellAppHeaderOptions extends AppShellGlobalOptions {
 	show?: boolean | string[];
 	height?: number;
-	showMenuTriggerRight?: boolean;
-	showMenuTriggerLeft?: boolean;
+	showMenuTriggerRight?: boolean | string[];
+	showMenuTriggerLeft?: boolean | string[];
 }
 
 export interface AppShellTabBarOptions extends AppShellGlobalOptions {
 	show?: boolean | string[];
 	height?: number;
+	/** show the text below the icons */
+	showText?: boolean;
 }
 
 export interface AppShellOptions extends AppShellGlobalOptions {
@@ -43,6 +46,13 @@ export interface AppShellOptions extends AppShellGlobalOptions {
 	sidebar?: AppShellSidebarOptions;
 	navbar?: AppShellNavbarOptions;
 	appHeader?: AppShellAppHeaderOptions;
+}
+
+export interface AppShellStats {
+	width: number;
+	height: number;
+	mainContentHeight: number;
+	mainContentWidth: number;
 }
 
 export function getComputedOptions<T>(options: AppShellOptions, navigationProp: string): T {

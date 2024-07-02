@@ -28,7 +28,8 @@ export const BREAKPOINT_DIMENSIONS = {
 };
 
 class BreakpointService {
-	public width: number = $state();
+	public windowWidth: number = $state();
+	public windowHeight: number = $state();
 	constructor() {
 		if (browser) {
 			this.handleResize();
@@ -41,7 +42,7 @@ class BreakpointService {
 		if (typeof breakpoints === "string") breakpoints = [breakpoints];
 		for (const breakpoint of breakpoints) {
 			const dimensions = BREAKPOINT_DIMENSIONS[breakpoint];
-			if (this.width >= dimensions[0] && this.width <= dimensions[1]) {
+			if (this.windowWidth >= dimensions[0] && this.windowWidth <= dimensions[1]) {
 				return true;
 			}
 		}
@@ -49,7 +50,8 @@ class BreakpointService {
 	}
 
 	private handleResize() {
-		this.width = window.innerWidth;
+		this.windowWidth = window.innerWidth;
+		this.windowHeight = window.innerHeight;
 	}
 }
 

@@ -69,7 +69,9 @@
 		title: "Svelte UI",
 		sidebar: {
 			show: MD_AND_UP,
-			width: 256
+			width: 256,
+			logoUrl: null,
+			title: null
 		},
 		navbar: {
 			show: MD_AND_UP,
@@ -84,7 +86,7 @@
 </script>
 
 <AppShell {options}>
-	<div class="w-full p-5 text-base text-black">
+	<div class="w-full p-5 text-base text-black bg-slate-100">
 		<div class="hidden md:flex flex-row flex-wrap justify-end items-center mb-8 gap-2">
 			<img src="https://img.shields.io/github/package-json/v/smallstack/svelte-ui" alt="Version" />
 			<a href="https://www.npmjs.com/package/@smallstack/svelte-ui" target="_blank">

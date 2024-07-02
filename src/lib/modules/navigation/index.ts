@@ -3,5 +3,6 @@ export { default as Navbar } from "./Navbar.svelte";
 export { default as SideNavbar } from "./SideNavbar.svelte";
 export * from "./active-link.svelte.js";
 export * from "./app-shell-options.js";
+export * from "./breakpoint.service.svelte.js";
 export * from "./navigation.js";
 

@@ -60,4 +60,11 @@
 			<pre>TBD</pre>
 		</div>
 	</div>
+
+	<ComponentSubHeader title="Tailwind Setup"></ComponentSubHeader>
+
+	To use the components with Tailwind CSS, you obviously need to have Tailwind CSS installed. Since
+	svelte (and sveltekit) strip out unused CSS, you need to add the following to your
+	tailwind.config.js content array: <br />
+	<pre>{`"node_modules/@smallstack/svelte-ui/dist/**/*.{html,svelte,js,ts}"`}</pre>
 </div>

@@ -14,32 +14,36 @@
 </script>
 
 <div
-	class="pt-5 p-2 flex flex-col gap-8"
+	class="pt-12 p-2 flex flex-col gap-4"
 	style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor}; width:{computedOptions.width ||
 		200}px; --navbarTextColor: {computedOptions?.textColor};"
 >
-	<!-- <div class="w-full flex flex-col justify-center items-center text-sm tracking-wider mb-8">
-        {#if options?.logoUrl}
-		<a href="/">
-			<img src="/svelte-ui-logo.svg" alt="Svelte UI Logo" width="160px" />
-		</a>
-        {/if}
-        {#if options?.title}
-            <div class="text-xl">{options.title}</div>
-        {/if} 
-	</div> -->
+	{#if computedOptions?.logoUrl || computedOptions?.title}
+		<div class="w-full flex flex-col justify-center items-center text-sm tracking-wider mb-8">
+			{#if computedOptions?.logoUrl}
+				<a href="/">
+					<img src={computedOptions?.logoUrl} alt="Logo" width="160px" />
+				</a>
+			{/if}
+			{#if computedOptions?.title}
+				<div class="text-xl">{computedOptions.title}</div>
+			{/if}
+		</div>
+	{/if}
 
-	{#each options?.navigation.entries as entry}
+	{#each computedOptions?.navigation.entries as entry}
 		<div class="flex flex-col gap-1 w-full">
-			<div
-				class="text-lg tracking-wider p-2 rounded-md flex flex-row gap-3 items-center"
-				style={entry.entries
-					? "background-color: oklch(from var(--navbarTextColor) l c h / .05);"
-					: ""}
-			>
-				<i class="text-md {entry.icon}"></i>
-				<span>{entry.text}</span>
-			</div>
+			<a href={entry.link} use:isActiveLink={"menu-entry-active"}>
+				<div
+					class="text-lg tracking-wider p-2 rounded-md flex flex-row gap-3 items-center"
+					style={entry.entries
+						? "background-color: oklch(from var(--navbarTextColor) l c h / .05);"
+						: ""}
+				>
+					<i class="text-md {entry.icon}"></i>
+					<span>{entry.text}</span>
+				</div>
+			</a>
 			{#each entry.entries as subEntry}
 				<div class="pl-8">
 					<a href={subEntry.link} use:isActiveLink={"menu-entry-active"}>

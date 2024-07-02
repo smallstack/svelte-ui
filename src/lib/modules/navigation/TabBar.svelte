@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { isActiveLink } from "./active-link.svelte.js";
 	import {
 		getComputedOptions,
-		type AppShellAppHeaderOptions,
-		type AppShellOptions
+		type AppShellOptions,
+
+		type AppShellTabBarOptions
 	} from "./app-shell-options.js";
 
 	let { options }: { options?: AppShellOptions } = $props();
 
-	let computedOptions: AppShellAppHeaderOptions = getComputedOptions(options, "tabBar");
+	let computedOptions: AppShellTabBarOptions = getComputedOptions(options, "tabBar");
 </script>
 
 <div
@@ -16,15 +16,14 @@
 	style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor}; height:{computedOptions.height ||
 		64}px; --navbarBgColor: {computedOptions?.bgColor}; --navbarTextColor: {computedOptions?.textColor}"
 >
-	{#each options?.navigation?.entries as entry}
+	{#each computedOptions?.navigation?.entries as entry}
 		<a href={entry.link}>
-			<div class="flex flex-col gap-2">
-                <i class="text-xl {entry.icon}"></i>
-				<!-- <div>{entry.text}</div> -->
+			<div class="flex flex-col gap-0 justify-center items-center">
+				<i class="text-xl {entry.icon}"></i>
+				{#if computedOptions.showText === true}
+					<div>{entry.text}</div>
+				{/if}
 			</div>
 		</a>
 	{/each}
 </div>
-
-<style>
-</style>

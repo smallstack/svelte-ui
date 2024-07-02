@@ -2,7 +2,12 @@
 	import { browser } from "$app/environment";
 	import { setContext } from "svelte";
 	import { writable } from "svelte/store";
-	import { APP_SHELL_OPTIONS, type AppShellOptions } from "./app-shell-options.js";
+	import {
+		APP_SHELL_OPTIONS,
+		APP_SHELL_STATS,
+		type AppShellOptions,
+		type AppShellStats
+	} from "./app-shell-options.js";
 	import AppHeader from "./AppHeader.svelte";
 	import { breakpointService } from "./breakpoint.service.svelte.js";
 	import Navbar from "./Navbar.svelte";
@@ -14,7 +19,7 @@
 		textColor: "oklch(var(--pc))",
 		navbar: {
 			show: true,
-			showNavigation: true,
+			showNavigation: false,
 			height: 64
 		},
 		sidebar: {
@@ -42,36 +47,35 @@
 	setContext(APP_SHELL_OPTIONS, optionsStore);
 
 	// add calculated states
-	let mainContentHeight = $state(0);
-	let mainContentWidth = $state(0);
-	let windowInnerHeight = $state(0);
-	let windowInnerWidth = $state(0);
-
+	const statsStore = writable<AppShellStats>({
+		height: 0,
+		width: 0,
+		mainContentHeight: 0,
+		mainContentWidth: 0
+	});
 	$effect(() => {
 		const appShellOptions = $optionsStore;
-		let newMainContentHeight = windowInnerHeight;
-		let newMainContentWidth = windowInnerWidth;
-		if (breakpointService.matches(appShellOptions?.navbar?.show))
-			newMainContentHeight -= appShellOptions.navbar.height || 64;
-		if (breakpointService.matches(appShellOptions?.appHeader?.show))
-			newMainContentHeight -= appShellOptions.appHeader.height || 64;
-		if (breakpointService.matches(appShellOptions?.tabBar?.show))
-			newMainContentHeight -= appShellOptions.tabBar.height || 64;
-		if (breakpointService.matches(appShellOptions?.sidebar?.show))
-			newMainContentWidth -= appShellOptions.sidebar.width || 180;
 
-		mainContentHeight = newMainContentHeight;
-		mainContentWidth = newMainContentWidth;
+		let mainContentHeight = breakpointService.windowHeight;
+		let mainContentWidth = breakpointService.windowWidth;
+		if (breakpointService.matches(appShellOptions?.navbar?.show))
+			mainContentHeight -= appShellOptions.navbar.height || 64;
+		if (breakpointService.matches(appShellOptions?.appHeader?.show))
+			mainContentHeight -= appShellOptions.appHeader.height || 64;
+		if (breakpointService.matches(appShellOptions?.tabBar?.show))
+			mainContentHeight -= appShellOptions.tabBar.height || 64;
+		if (breakpointService.matches(appShellOptions?.sidebar?.show))
+			mainContentWidth -= appShellOptions.sidebar.width || 180;
+
+		statsStore.set({
+			height: breakpointService.windowHeight,
+			width: breakpointService.windowWidth,
+			mainContentHeight,
+			mainContentWidth
+		});
 	});
 
-	// add window listener functions
-	function dispatchWindowResize() {
-		if (browser) {
-			windowInnerHeight = window.innerHeight;
-			windowInnerWidth = window.innerWidth;
-		}
-	}
-	dispatchWindowResize();
+	setContext(APP_SHELL_STATS, statsStore);
 </script>
 
 <div class="w-svw h-svh relative">
@@ -81,11 +85,14 @@
 	{#if breakpointService.matches($optionsStore?.navbar?.show)}
 		<Navbar options={$optionsStore}></Navbar>
 	{/if}
-	<div class="flex flex-row overflow-hidden" style="height: {mainContentHeight}px">
+	<div class="flex flex-row overflow-hidden" style="height: {$statsStore.mainContentHeight}px">
 		{#if breakpointService.matches($optionsStore?.sidebar?.show)}
 			<SideNavbar options={$optionsStore}></SideNavbar>
 		{/if}
-		<div class="overflow-auto" style="height: {mainContentHeight}px; width: {mainContentWidth}px;">
+		<div
+			class="overflow-auto"
+			style="height: {$statsStore.mainContentHeight}px; width: {$statsStore.mainContentWidth}px;"
+		>
 			{@render children()}
 		</div>
 	</div>

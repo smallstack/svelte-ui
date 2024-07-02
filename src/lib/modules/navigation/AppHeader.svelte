@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { fade, fly } from "svelte/transition";
+	import { fly } from "svelte/transition";
 	import {
 		getComputedOptions,
 		type AppShellAppHeaderOptions,
 		type AppShellOptions
 	} from "./app-shell-options.js";
+	import { breakpointService } from "./breakpoint.service.svelte.js";
 
 	let { options }: { options?: AppShellOptions } = $props();
 
@@ -69,7 +70,7 @@
 		64}px;"
 >
 	<div class="w-16">
-		{#if computedOptions.showMenuTriggerLeft}
+		{#if breakpointService.matches(computedOptions.showMenuTriggerLeft)}
 			{@render burgerTrigger()}
 		{/if}
 	</div>
@@ -84,7 +85,7 @@
 		</div>
 	</a>
 	<div class="w-16 text-end">
-		{#if computedOptions.showMenuTriggerRight}
+		{#if breakpointService.matches(computedOptions.showMenuTriggerRight)}
 			{@render burgerTrigger()}
 		{/if}
 	</div>
