@@ -55,6 +55,10 @@
 		"./form-inputs": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/form-inputs.js"
+		},
+		"./navigation": {
+			"types": "./dist/modules/navigation/index.d.ts",
+			"svelte": "./dist/modules/navigation/index.js"
 		}
 	},
 	"files": [
