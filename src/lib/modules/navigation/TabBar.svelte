@@ -3,10 +3,6 @@
 	import type { NavigationEntry } from "./navigation.js";
 	let { options }: { options: AppShellTabBarOptions } = $props();
 
-	// divide entries into 2 groups, even if no super btn is provided
-	// if super btn is provided, it will be placed in the middle
-	// if not, the entries will be divided into 2 groups
-	// and the middle entry will be placed in the middle
 	let entries = options.navigation?.entries || [];
 	let middleIndex = Math.floor(entries.length / 2);
 	let leftEntries = entries.slice(0, middleIndex);
@@ -37,7 +33,7 @@
 			{/each}
 		</div>
 		<div class="relative">
-			<div class="absolute -top-9 -left-9">
+			<div class="absolute -top-9 -left-9 overflow-hidden bottom-0">
 				<a
 					class="btn btn-circle border-8 btn-lg"
 					style="background-color: {options.textColor}; color: {options.bgColor}; border-color: {options.bgColor}; zoom: 1.25"

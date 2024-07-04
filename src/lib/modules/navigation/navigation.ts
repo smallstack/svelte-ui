@@ -1,6 +1,6 @@
 export interface NavigationEntry {
 	// type: "link" | "divider";
-	text: string;
+	text?: string;
 	link?: string;
 	clickFn?: () => void;
 	icon?: string;
