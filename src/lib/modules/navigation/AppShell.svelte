@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { browser } from "$app/environment";
 	import { setContext } from "svelte";
 	import { writable } from "svelte/store";
 	import {
 		APP_SHELL_OPTIONS,
 		APP_SHELL_STATS,
+		getComputedOptions,
 		type AppShellOptions,
 		type AppShellStats
 	} from "./app-shell-options.js";
@@ -97,6 +97,6 @@
 		</div>
 	</div>
 	{#if breakpointService.matches($optionsStore?.tabBar?.show)}
-		<TabBar options={$optionsStore}></TabBar>
+		<TabBar options={getComputedOptions($optionsStore, "tabBar")}></TabBar>
 	{/if}
 </div>

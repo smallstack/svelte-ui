@@ -39,6 +39,11 @@ export interface AppShellTabBarOptions extends AppShellGlobalOptions {
 	height?: number;
 	/** show the text below the icons */
 	showText?: boolean;
+	superBtn?: {
+		icon: string;
+		text?: string;
+		callbackFn: () => void;
+	};
 }
 
 export interface AppShellOptions extends AppShellGlobalOptions {

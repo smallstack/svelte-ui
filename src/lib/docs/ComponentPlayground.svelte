@@ -7,7 +7,7 @@
 		<div class="text-lg">{title}</div>
 	{/if}
 	<div class="rounded-box shadow-lg bg-white flex flex-row gap-2 justify-between text-black">
-		<div class="p-5 relative">
+		<div class="p-5 relative w-full">
 			<slot />
 		</div>
 		{#if value}
