@@ -11,7 +11,7 @@
 				{ icon: "fas fa-home", text: "Home", link: "/" },
 				{ icon: "fas fa-list", text: "Forms", link: "/forms/date-time-range-input" },
 				{ icon: "fas fa-box", text: "Tabs", link: "/modules/navigation/tabbar" },
-				{ icon: "fas fa-bolt", text: "Actions", link: "/actions/overlay" }
+				{ icon: "fas fa-bolt", text: "Alert", clickFn: () => alert("Alert clicked") }
 			]
 		}
 	};
@@ -21,11 +21,15 @@
 	let iconsAndSuperBtnOptions: AppShellTabBarOptions = {
 		...example,
 		showText: true,
-		superBtn: {
-			icon: "fas fa-qrcode",
-			callbackFn: () => {
-				alert("Super Button clicked");
-			}
+		showSuperBtn: true,
+		navigation: {
+			entries: [
+				{ icon: "fas fa-home", text: "Home", link: "/" },
+				{ icon: "fas fa-list", text: "Forms", link: "/forms/date-time-range-input" },
+				{ icon: "fas fa-qrcode", text: "SCANNER", clickFn: () => alert("Scanner clicked") },
+				{ icon: "fas fa-box", text: "Tabs", link: "/modules/navigation/tabbar" },
+				{ icon: "fas fa-bolt", text: "Alert", clickFn: () => alert("Alert clicked") }
+			]
 		}
 	};
 </script>
@@ -39,6 +43,8 @@
 </ComponentPlayground>
 
 <ComponentPlayground title="Icon & Super Button">
-    <div class="pb-8">The Super Button currently does not work when the TabBar component is used via web component.</div>
+	<div class="pb-8">
+		The Super Button currently does not work when the TabBar component is used via web component.
+	</div>
 	<TabBar options={iconsAndSuperBtnOptions}></TabBar>
 </ComponentPlayground>

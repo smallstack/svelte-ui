@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { type AppShellTabBarOptions } from "./app-shell-options.js";
+	import type { NavigationEntry } from "./navigation.js";
 	let { options }: { options: AppShellTabBarOptions } = $props();
 
 	// divide entries into 2 groups, even if no super btn is provided
@@ -9,47 +10,63 @@
 	let entries = options.navigation?.entries || [];
 	let middleIndex = Math.floor(entries.length / 2);
 	let leftEntries = entries.slice(0, middleIndex);
-	let rightEntries = entries.slice(middleIndex);
+	let middleEntry = entries[middleIndex];
+	let rightEntries = entries.slice(middleIndex + 1);
 </script>
 
-<div
-	class="flex flex-row gap-2 w-full justify-evenly items-center p-4 relative"
-	style="background-color: {options.bgColor}; color: {options.textColor}; height:{options.height ||
-		64}px; --navbarBgColor: {options.bgColor}; --navbarTextColor: {options.textColor}"
->
-	{#each leftEntries as entry}
-		<a href={entry.link}>
-			<div class="flex flex-col gap-0 justify-center items-center">
-				<i class="text-xl {entry.icon}"></i>
-				{#if options.showText === true}
-					<div>{entry.text}</div>
-				{/if}
-			</div>
-		</a>
-	{/each}
-	{#if options.superBtn}
-		<div class="w-4"></div>
-		<div class="absolute -top-9 flex flex-col gap-0 items-center text">
-			<button
-				class="btn btn-circle border-8 btn-lg"
-				style="background-color: {options.textColor}; color: {options.bgColor}; border-color: {options.bgColor}; zoom: 1.25"
-				onclick={options.superBtn.callbackFn}
-			>
-				<i class="text-xl {options.superBtn.icon}"></i>
-			</button>
-			{#if options.superBtn.text}
-				<span class="-bottom-4 absolute truncate">{options.superBtn.text}</span>
+{#snippet entryAnchor(entry: NavigationEntry)}
+	<a href={entry.link} onclick={entry.clickFn} class="cursor-pointer">
+		<div class="flex flex-col gap-0 justify-center items-center">
+			<i class="text-xl {entry.icon}"></i>
+			{#if options.showText === true}
+				<div>{entry.text}</div>
 			{/if}
 		</div>
-	{/if}
-	{#each rightEntries as entry}
-		<a href={entry.link}>
-			<div class="flex flex-col gap-0 justify-center items-center">
-				<i class="text-xl {entry.icon}"></i>
-				{#if options.showText === true}
-					<div>{entry.text}</div>
+	</a>
+{/snippet}
+
+{#if options.showSuperBtn}
+	<div
+		class="flex flex-row"
+		style="background-color: {options.bgColor}; color: {options.textColor}; height:{options.height ||
+			64}px; --navbarBgColor: {options.bgColor}; --navbarTextColor: {options.textColor}"
+	>
+		<div class="flex flex-row gap-2 w-full justify-evenly items-center p-4 pr-6 pl-2">
+			{#each leftEntries as entry}
+				{@render entryAnchor(entry)}
+			{/each}
+		</div>
+		<div class="relative">
+			<div class="absolute -top-9 -left-9">
+				<a
+					class="btn btn-circle border-8 btn-lg"
+					style="background-color: {options.textColor}; color: {options.bgColor}; border-color: {options.bgColor}; zoom: 1.25"
+					href={middleEntry.link}
+					onclick={middleEntry.clickFn}
+				>
+					<i class="text-xl {middleEntry.icon}"></i>
+				</a>
+				{#if middleEntry.text}
+					<div class="text-center relative bottom-2 w-20">
+						<span class="truncate">{middleEntry.text}</span>
+					</div>
 				{/if}
 			</div>
-		</a>
-	{/each}
-</div>
+		</div>
+		<div class="flex flex-row gap-2 w-full justify-evenly items-center p-4 pl-6 pr-2">
+			{#each rightEntries as entry}
+				{@render entryAnchor(entry)}
+			{/each}
+		</div>
+	</div>
+{:else}
+	<div
+		class="flex flex-row gap-2 w-full justify-evenly items-center p-4 relative"
+		style="background-color: {options.bgColor}; color: {options.textColor}; height:{options.height ||
+			64}px; --navbarBgColor: {options.bgColor}; --navbarTextColor: {options.textColor}"
+	>
+		{#each entries as entry}
+			{@render entryAnchor(entry)}
+		{/each}
+	</div>
+{/if}
