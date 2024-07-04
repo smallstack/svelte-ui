@@ -11,6 +11,7 @@ const pkg = JSON.parse(json);
 export function wcViteConfig(fileName: string, moduleName: string) {
 	return defineConfig({
 		build: {
+			emptyOutDir: true,
 			lib: {
 				entry: resolve(__dirname,"../dist/" + fileName + ".js"),
 				name: moduleName,
