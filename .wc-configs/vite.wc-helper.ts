@@ -11,14 +11,13 @@ const pkg = JSON.parse(json);
 export function wcViteConfig(fileName: string, moduleName: string) {
 	return defineConfig({
 		build: {
-			emptyOutDir: true,
 			lib: {
-				entry: resolve(__dirname,"../dist/" + fileName + ".js"),
+				entry: resolve(__dirname, "../dist/" + fileName + ".js"),
 				name: moduleName,
 				fileName,
 				formats: ["iife"]
 			},
-			outDir: "static/cdn/web-components/" + pkg.version + "/" + fileName,
+			outDir: "static/cdn/web-components/" + pkg.version + "/" + fileName
 		},
 		plugins: [svelte()]
 	});
