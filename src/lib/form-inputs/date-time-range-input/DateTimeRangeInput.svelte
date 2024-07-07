@@ -104,7 +104,7 @@
 	<input
 		placeholder="von"
 		type="string"
-		class="input input-bordered w-full join-item"
+		class="input input-bordered w-full join-item min-w-32"
 		readonly
 		value={inputFromFormatted()}
 		onclick={() => inputFromPicker.showPicker()}
@@ -112,7 +112,7 @@
 	<input
 		placeholder="bis"
 		type="string"
-		class="input input-bordered w-full join-item"
+		class="input input-bordered w-full join-item  min-w-32"
 		readonly
 		value={inputToFormatted()}
 		onclick={() => inputToPicker.showPicker()}

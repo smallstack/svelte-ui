@@ -13,6 +13,7 @@
 	import Navbar from "./Navbar.svelte";
 	import SideNavbar from "./SideNavbar.svelte";
 	import TabBar from "./TabBar.svelte";
+	import { afterNavigate } from "$app/navigation";
 
 	let defaults: AppShellOptions = {
 		bgColor: "oklch(var(--p))",
@@ -74,8 +75,12 @@
 			mainContentWidth
 		});
 	});
-
 	setContext(APP_SHELL_STATS, statsStore);
+
+	// scroll main to top after navigation
+	afterNavigate(() => {
+		document.getElementById("app-shell-main").scrollTo(0, 0);
+	});
 </script>
 
 <div class="w-svw h-svh relative">
@@ -91,6 +96,7 @@
 		{/if}
 		<div
 			class="overflow-auto"
+			id="app-shell-main"
 			style="height: {$statsStore.mainContentHeight}px; width: {$statsStore.mainContentWidth}px;"
 		>
 			{@render children()}

@@ -35,7 +35,7 @@
 		<div class="relative">
 			<div class="absolute -top-9 -left-9 overflow-hidden bottom-0">
 				<a
-					class="btn btn-circle border-8 btn-lg"
+					class="btn btn-circle border-8 btn-lg shadow-none"
 					style="background-color: {options.textColor}; color: {options.bgColor}; border-color: {options.bgColor}; zoom: 1.25"
 					href={middleEntry.link}
 					onclick={middleEntry.clickFn}
