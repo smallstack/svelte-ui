@@ -15,29 +15,29 @@
 
 {#snippet burgerTrigger()}
 	<button class="btn btn-ghost" onclick={() => (showFullscreenMenu = !showFullscreenMenu)}>
-		<i class="fas fa-bars text-xl"></i>
+		<i class="fas fa-bars text-2xl"></i>
 	</button>
 {/snippet}
 
 {#if showFullscreenMenu}
 	<div
-		class="fixed top-0 left-0 w-full h-full z-50 p-2 text-center"
+		class="fixed top-0 left-0 right-0 bottom-0 z-50 p-8 overflow-x-hidden overflow-y-auto"
 		style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor};"
 		transition:fly={{ duration: 250 }}
 	>
 		<div class="flex flex-row gap-2 justify-end">
 			<button class="btn btn-ghost" onclick={() => (showFullscreenMenu = !showFullscreenMenu)}>
-				<i class="fas fa-times text-xl"></i>
+				<i class="fas fa-times text-2xl"></i>
 			</button>
 		</div>
 
 		<a href="/" onclick={() => (showFullscreenMenu = !showFullscreenMenu)}>
 			<div class="flex flex-col gap-2 items-center m-4 mb-12">
 				{#if computedOptions?.logoUrl}
-					<img src={computedOptions.logoUrl} alt="LOGO" class="h-12" />
+					<img src={computedOptions.logoUrl} alt="LOGO" class="h-36" />
 				{/if}
 				{#if computedOptions?.title}
-					<span class="uppercase text-2xl">{computedOptions.title}</span>
+					<span class="uppercase text-6xl">{computedOptions.title}</span>
 				{/if}
 			</div>
 		</a>
@@ -52,7 +52,7 @@
 					{#each entry.entries as child}
 						<a href={child.link} onclick={() => (showFullscreenMenu = !showFullscreenMenu)}>
 							<div
-								class=" p-2 text-base cursor-pointer"
+								class="p-2 text-base cursor-pointer"
 								style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor};"
 							>
 								{child.text}

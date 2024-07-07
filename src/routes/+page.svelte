@@ -12,7 +12,7 @@
 <ComponentSubHeader title="Dependencies"></ComponentSubHeader>
 This UI library is based on
 <div class="flex flex-col gap-2 p-4">
-	<li>Svelte 5</li>
+	<li>Svelte 5 Beta</li>
 	<li>DaisyUI 4.x</li>
 	<li>Free Fontawesome Icons</li>
 	<li>@floating-ui/dom</li>
@@ -25,4 +25,7 @@ DaisyUI as well as all needed Forms Inputs.
 
 <ComponentSubHeader title="Web Components"></ComponentSubHeader>
 Since this library is also used in legacy stacks (Angular/React projects) all components are also available
-as web components. ## License MIT
+as web components.
+
+<ComponentSubHeader title="License"></ComponentSubHeader>
+MIT
