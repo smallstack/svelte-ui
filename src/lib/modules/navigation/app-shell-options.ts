@@ -47,7 +47,7 @@ export interface AppShellOptions extends AppShellGlobalOptions {
 	sidebar?: AppShellSidebarOptions;
 	navbar?: AppShellNavbarOptions;
 	appHeader?: AppShellAppHeaderOptions;
-	hasPermissionFn?: hasPermissionFn;
+	availablePermissions?: string[];
 }
 
 export interface AppShellStats {
@@ -61,34 +61,37 @@ export type hasPermissionFn = (permission: string) => boolean;
 
 export function filterAuthorizedNavigation(
 	navigation: Navigation,
-	hasPermission: hasPermissionFn
+	availablePermissions: string[]
 ): Navigation {
 	const entries = navigation.entries.filter((entry) => {
 		if (entry.requiredPermission === undefined) return true;
 		if (typeof entry.requiredPermission === "string") {
-			if (typeof hasPermission !== "function") {
+			if (availablePermissions === undefined) {
 				console.error(
-					"AppShell: hasPermissionFn is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
+					"AppShell: availablePermissions is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
 				);
 				return false;
 			}
-			return hasPermission(entry.requiredPermission);
+			return availablePermissions.includes(entry.requiredPermission);
 		}
 		return entry.requiredPermission.some((perm) => {
-			if (typeof hasPermission !== "function") {
+			if (availablePermissions === undefined) {
 				console.error(
-					"AppShell: hasPermissionFn is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
+					"AppShell: availablePermissions is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
 				);
 				return false;
 			}
-			return hasPermission(perm);
+			return availablePermissions.includes(perm);
 		});
 	});
 
 	// filter sub-entries of remaining entries
 	for (const entry of entries) {
 		if (entry.entries) {
-			entry.entries = filterAuthorizedNavigation({ entries: entry.entries }, hasPermission).entries;
+			entry.entries = filterAuthorizedNavigation(
+				{ entries: entry.entries },
+				availablePermissions
+			).entries;
 		}
 	}
 	return { entries };
@@ -109,7 +112,7 @@ export function getComputedOptions<T>(options: AppShellOptions, navigationProp: 
 
 	// filter navigation entries based on permissions
 	if (base.navigation) {
-		base.navigation = filterAuthorizedNavigation(base.navigation, options.hasPermissionFn);
+		base.navigation = filterAuthorizedNavigation(base.navigation, options.availablePermissions);
 	}
 
 	return base;

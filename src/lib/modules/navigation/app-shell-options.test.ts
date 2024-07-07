@@ -22,8 +22,8 @@ describe("AppShellOptions", () => {
 				}
 			]
 		};
-		const hasPermission = (permission) => permission === "permission1";
-		const filteredNavigation = filterAuthorizedNavigation(navigation, hasPermission);
+		const availablePermissions = ["permission1"];
+		const filteredNavigation = filterAuthorizedNavigation(navigation, availablePermissions);
 		expect(filteredNavigation.entries.length).toBe(3);
 		expect(filteredNavigation.entries[0].text).toBe("Entry 1");
 		expect(filteredNavigation.entries[1].text).toBe("Entry 3");
