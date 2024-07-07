@@ -5,6 +5,8 @@ export interface NavigationEntry {
 	clickFn?: () => void;
 	icon?: string;
 	entries?: NavigationEntry[];
+	/** If set, then this navigation entry will only be shown if the current user has the given permission. If an array is provided, one of these permissions is needed only (OR). */
+	requiredPermission?: string | string[];
 }
 
 export interface Navigation {

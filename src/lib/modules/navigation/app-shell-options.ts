@@ -47,6 +47,7 @@ export interface AppShellOptions extends AppShellGlobalOptions {
 	sidebar?: AppShellSidebarOptions;
 	navbar?: AppShellNavbarOptions;
 	appHeader?: AppShellAppHeaderOptions;
+	hasPermissionFn?: hasPermissionFn;
 }
 
 export interface AppShellStats {
@@ -56,9 +57,46 @@ export interface AppShellStats {
 	mainContentWidth: number;
 }
 
+export type hasPermissionFn = (permission: string) => boolean;
+
+export function filterAuthorizedNavigation(
+	navigation: Navigation,
+	hasPermission: hasPermissionFn
+): Navigation {
+	const entries = navigation.entries.filter((entry) => {
+		if (entry.requiredPermission === undefined) return true;
+		if (typeof entry.requiredPermission === "string") {
+			if (typeof hasPermission !== "function") {
+				console.error(
+					"AppShell: hasPermissionFn is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
+				);
+				return false;
+			}
+			return hasPermission(entry.requiredPermission);
+		}
+		return entry.requiredPermission.some((perm) => {
+			if (typeof hasPermission !== "function") {
+				console.error(
+					"AppShell: hasPermissionFn is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
+				);
+				return false;
+			}
+			return hasPermission(perm);
+		});
+	});
+
+	// filter sub-entries of remaining entries
+	for (const entry of entries) {
+		if (entry.entries) {
+			entry.entries = filterAuthorizedNavigation({ entries: entry.entries }, hasPermission).entries;
+		}
+	}
+	return { entries };
+}
+
 export function getComputedOptions<T>(options: AppShellOptions, navigationProp: string): T {
 	if (!(navigationProp in options)) throw new Error("property " + navigationProp + " not found");
-	const base: T = options[navigationProp];
+	const base = options[navigationProp];
 
 	function useGlobalValue(propName: string): void {
 		if (base[propName] === undefined && base[propName] !== null) base[propName] = options[propName];
@@ -68,6 +106,11 @@ export function getComputedOptions<T>(options: AppShellOptions, navigationProp: 
 	useGlobalValue("bgColor");
 	useGlobalValue("textColor");
 	useGlobalValue("navigation");
+
+	// filter navigation entries based on permissions
+	if (base.navigation) {
+		base.navigation = filterAuthorizedNavigation(base.navigation, options.hasPermissionFn);
+	}
 
 	return base;
 }
