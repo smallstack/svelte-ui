@@ -25,10 +25,10 @@
 
 	{#snippet menuEntry(entry, extraClasses = "")}
 		<a href={entry.link} use:isActiveLink={"menu-entry-active"}>
-			<div
-				class="p-2 rounded-md flex flex-row gap-3 items-center {extraClasses}"
-			>
-				<i class="text-md {entry.icon}"></i>
+			<div class="p-2 rounded-md flex flex-row gap-3 items-center {extraClasses}">
+				{#if entry.icon}
+					<i class="text-md {entry.icon}"></i>
+				{/if}
 				<span>{entry.text}</span>
 			</div>
 		</a>
@@ -39,17 +39,6 @@
 			{@render menuEntry(entry, "p-2 text-lg")}
 			{#each entry.entries as subEntry}
 				{@render menuEntry(subEntry, "pl-8 text-md")}
-				<!-- <div class="pl-8">
-					<a
-						href={subEntry.link}
-						class="menu-entry menu-entry-active"
-						use:isActiveLink={"menu-entry-active"}
-					>
-						<div class="p-2">
-							{subEntry.text}
-						</div>
-					</a>
-				</div> -->
 			{/each}
 		</div>
 	{/each}
