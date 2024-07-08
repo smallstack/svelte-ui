@@ -1,57 +1,55 @@
 <script lang="ts">
 	import { isActiveLink } from "./active-link.svelte.js";
-	import {
-		getComputedOptions,
-		type AppShellOptions,
-		type AppShellSidebarOptions
-	} from "./app-shell-options.js";
+	import { type AppShellSidebarOptions } from "./app-shell-options.js";
 
-	let { options }: { options?: AppShellOptions } = $props();
-	let computedOptions: AppShellSidebarOptions = $state(getComputedOptions(options, "sidebar"));
-	$effect(() => {
-		computedOptions = getComputedOptions(options, "sidebar");
-	});
+	let { options }: { options?: AppShellSidebarOptions } = $props();
 </script>
 
 <div
 	class="pt-12 p-2 flex flex-col gap-4"
-	style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor}; width:{computedOptions.width ||
-		200}px; --navbarTextColor: {computedOptions?.textColor};"
+	style="background-color: {options?.bgColor}; color: {options?.textColor}; width:{options.width ||
+		200}px; --navbarTextColor: {options?.textColor};"
 >
-	{#if computedOptions?.logoUrl || computedOptions?.title}
+	{#if options?.logoUrl || options?.title}
 		<div class="w-full flex flex-col justify-center items-center text-sm tracking-wider mb-8">
-			{#if computedOptions?.logoUrl}
+			{#if options?.logoUrl}
 				<a href="/">
-					<img src={computedOptions?.logoUrl} alt="Logo" width="160px" />
+					<img src={options?.logoUrl} alt="Logo" width="160px" />
 				</a>
 			{/if}
-			{#if computedOptions?.title}
-				<div class="text-xl">{computedOptions.title}</div>
+			{#if options?.title}
+				<div class="text-xl">{options.title}</div>
 			{/if}
 		</div>
 	{/if}
 
-	{#each computedOptions?.navigation.entries as entry}
+	{#snippet menuEntry(entry, extraClasses = "")}
+		<a href={entry.link} use:isActiveLink={"menu-entry-active"}>
+			<div
+				class="p-2 rounded-md flex flex-row gap-3 items-center {extraClasses}"
+			>
+				<i class="text-md {entry.icon}"></i>
+				<span>{entry.text}</span>
+			</div>
+		</a>
+	{/snippet}
+
+	{#each options?.navigation?.entries as entry}
 		<div class="flex flex-col gap-1 w-full">
-			<a href={entry.link} use:isActiveLink={"menu-entry-active"}>
-				<div
-					class="text-lg tracking-wider p-2 rounded-md flex flex-row gap-3 items-center"
-					style={entry.entries
-						? "background-color: oklch(from var(--navbarTextColor) l c h / .05);"
-						: ""}
-				>
-					<i class="text-md {entry.icon}"></i>
-					<span>{entry.text}</span>
-				</div>
-			</a>
+			{@render menuEntry(entry, "p-2 text-lg")}
 			{#each entry.entries as subEntry}
-				<div class="pl-8">
-					<a href={subEntry.link} use:isActiveLink={"menu-entry-active"}>
-						<div class="p-2 menu-entry">
+				{@render menuEntry(subEntry, "pl-8 text-md")}
+				<!-- <div class="pl-8">
+					<a
+						href={subEntry.link}
+						class="menu-entry menu-entry-active"
+						use:isActiveLink={"menu-entry-active"}
+					>
+						<div class="p-2">
 							{subEntry.text}
 						</div>
 					</a>
-				</div>
+				</div> -->
 			{/each}
 		</div>
 	{/each}

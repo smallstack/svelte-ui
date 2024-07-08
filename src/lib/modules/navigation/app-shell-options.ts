@@ -63,26 +63,25 @@ export function filterAuthorizedNavigation(
 	navigation: Navigation,
 	availablePermissions: string[]
 ): Navigation {
+	function checkPermission(permission: string): boolean {
+		if (
+			availablePermissions === undefined ||
+			availablePermissions === null ||
+			availablePermissions.length === 0
+		) {
+			console.error(
+				"AppShell: availablePermissions is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
+			);
+			return false;
+		}
+		return availablePermissions.includes(permission);
+	}
+
 	const entries = navigation.entries.filter((entry) => {
 		if (entry.requiredPermission === undefined) return true;
-		if (typeof entry.requiredPermission === "string") {
-			if (availablePermissions === undefined) {
-				console.error(
-					"AppShell: availablePermissions is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
-				);
-				return false;
-			}
-			return availablePermissions.includes(entry.requiredPermission);
-		}
-		return entry.requiredPermission.some((perm) => {
-			if (availablePermissions === undefined) {
-				console.error(
-					"AppShell: availablePermissions is not provided, but navigation entry needs permission. Ignoring permission check and not showing entry."
-				);
-				return false;
-			}
-			return availablePermissions.includes(perm);
-		});
+		if (typeof entry.requiredPermission === "string")
+			return checkPermission(entry.requiredPermission);
+		return entry.requiredPermission.some((perm) => checkPermission(perm));
 	});
 
 	// filter sub-entries of remaining entries
@@ -99,10 +98,12 @@ export function filterAuthorizedNavigation(
 
 export function getComputedOptions<T>(options: AppShellOptions, navigationProp: string): T {
 	if (!(navigationProp in options)) throw new Error("property " + navigationProp + " not found");
-	const base = options[navigationProp];
+	const clonedOptions = JSON.parse(JSON.stringify(options));
+	const base = clonedOptions[navigationProp];
 
 	function useGlobalValue(propName: string): void {
-		if (base[propName] === undefined && base[propName] !== null) base[propName] = options[propName];
+		if (base[propName] === undefined && base[propName] !== null)
+			base[propName] = clonedOptions[propName];
 	}
 	useGlobalValue("logoUrl");
 	useGlobalValue("title");
@@ -112,7 +113,10 @@ export function getComputedOptions<T>(options: AppShellOptions, navigationProp: 
 
 	// filter navigation entries based on permissions
 	if (base.navigation) {
-		base.navigation = filterAuthorizedNavigation(base.navigation, options.availablePermissions);
+		base.navigation = filterAuthorizedNavigation(
+			base.navigation,
+			clonedOptions.availablePermissions
+		);
 	}
 
 	return base;

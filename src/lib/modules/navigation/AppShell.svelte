@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { setContext } from "svelte";
-	import { writable } from "svelte/store";
+	import { get, writable } from "svelte/store";
 	import {
 		APP_SHELL_OPTIONS,
 		APP_SHELL_STATS,
@@ -85,14 +85,14 @@
 
 <div class="w-svw h-svh relative">
 	{#if breakpointService.matches($optionsStore?.appHeader?.show)}
-		<AppHeader options={$optionsStore}></AppHeader>
+		<AppHeader options={getComputedOptions($optionsStore, "appHeader")}></AppHeader>
 	{/if}
 	{#if breakpointService.matches($optionsStore?.navbar?.show)}
-		<Navbar options={$optionsStore}></Navbar>
+		<Navbar options={getComputedOptions($optionsStore, "navbar")}></Navbar>
 	{/if}
 	<div class="flex flex-row overflow-hidden" style="height: {$statsStore.mainContentHeight}px">
 		{#if breakpointService.matches($optionsStore?.sidebar?.show)}
-			<SideNavbar options={$optionsStore}></SideNavbar>
+			<SideNavbar options={getComputedOptions($optionsStore, "sidebar")}></SideNavbar>
 		{/if}
 		<div
 			class="overflow-auto"

@@ -1,15 +1,11 @@
 <script lang="ts">
 	import { fly } from "svelte/transition";
 	import {
-		getComputedOptions,
-		type AppShellAppHeaderOptions,
-		type AppShellOptions
+		type AppShellAppHeaderOptions
 	} from "./app-shell-options.js";
 	import { breakpointService } from "./breakpoint.service.svelte.js";
 
-	let { options }: { options?: AppShellOptions } = $props();
-
-	let computedOptions: AppShellAppHeaderOptions = getComputedOptions(options, "appHeader");
+	let { options }: { options?: AppShellAppHeaderOptions } = $props();
 	let showFullscreenMenu = $state(false);
 </script>
 
@@ -22,7 +18,7 @@
 {#if showFullscreenMenu}
 	<div
 		class="fixed top-0 left-0 right-0 bottom-0 z-50 p-8 overflow-x-hidden overflow-y-auto"
-		style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor};"
+		style="background-color: {options?.bgColor}; color: {options?.textColor};"
 		transition:fly={{ duration: 250 }}
 	>
 		<div class="flex flex-row gap-2 justify-end">
@@ -33,27 +29,27 @@
 
 		<a href="/" onclick={() => (showFullscreenMenu = !showFullscreenMenu)}>
 			<div class="flex flex-col gap-2 items-center m-4 mb-12">
-				{#if computedOptions?.logoUrl}
-					<img src={computedOptions.logoUrl} alt="LOGO" class="h-36" />
+				{#if options?.logoUrl}
+					<img src={options.logoUrl} alt="LOGO" class="h-36" />
 				{/if}
-				{#if computedOptions?.title}
-					<span class="uppercase text-6xl">{computedOptions.title}</span>
+				{#if options?.title}
+					<span class="uppercase text-6xl">{options.title}</span>
 				{/if}
 			</div>
 		</a>
 
 		<div class="flex flex-col gap-2">
-			{#each computedOptions?.navigation?.entries as entry}
+			{#each options?.navigation?.entries as entry}
 				<div
 					class="text-2xl p-2"
-					style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor};"
+					style="background-color: {options?.bgColor}; color: {options?.textColor};"
 				>
 					<span>{entry.text}</span>
 					{#each entry.entries as child}
 						<a href={child.link} onclick={() => (showFullscreenMenu = !showFullscreenMenu)}>
 							<div
 								class="p-2 text-base cursor-pointer"
-								style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor};"
+								style="background-color: {options?.bgColor}; color: {options?.textColor};"
 							>
 								{child.text}
 							</div>
@@ -66,26 +62,26 @@
 {/if}
 <div
 	class="w-full flex flex-row gap-2 justify-between items-center p-2"
-	style="background-color: {computedOptions?.bgColor}; color: {computedOptions?.textColor}; height:{computedOptions.height ||
+	style="background-color: {options?.bgColor}; color: {options?.textColor}; height:{options.height ||
 		64}px;"
 >
 	<div class="w-16">
-		{#if breakpointService.matches(computedOptions.showMenuTriggerLeft)}
+		{#if breakpointService.matches(options.showMenuTriggerLeft)}
 			{@render burgerTrigger()}
 		{/if}
 	</div>
 	<a href="/">
 		<div class="flex flex-row gap-2 items-center">
-			{#if computedOptions?.logoUrl}
-				<img src={computedOptions.logoUrl} alt="LOGO" class="h-12" />
+			{#if options?.logoUrl}
+				<img src={options.logoUrl} alt="LOGO" class="h-12" />
 			{/if}
-			{#if computedOptions?.title}
-				<span class="uppercase text-2xl">{computedOptions.title}</span>
+			{#if options?.title}
+				<span class="uppercase text-2xl">{options.title}</span>
 			{/if}
 		</div>
 	</a>
 	<div class="w-16 text-end">
-		{#if breakpointService.matches(computedOptions.showMenuTriggerRight)}
+		{#if breakpointService.matches(options.showMenuTriggerRight)}
 			{@render burgerTrigger()}
 		{/if}
 	</div>
