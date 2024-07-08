@@ -46,7 +46,10 @@
 		"test:unit": "vitest",
 		"version": "npm run build:wc && git add static/cdn/**",
 		"release:patch": "npm version patch && git push && git push --tags",
-		"release:minor": "npm version minor && git push && git push --tags"
+		"release:minor": "npm version minor && git push && git push --tags",
+		"clean": "npm unlink -g && npm uninstall -g && rm -Rf dist .svelte-kit .vercel",
+		"link": "npm link",
+		"build:clean": "npm run clean && npm run build && npm run link"
 	},
 	"exports": {
 		".": {
