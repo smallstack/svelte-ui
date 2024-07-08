@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { fly } from "svelte/transition";
-	import {
-		type AppShellAppHeaderOptions
-	} from "./app-shell-options.js";
+	import { type AppShellAppHeaderOptions } from "./app-shell-options.js";
 	import { breakpointService } from "./breakpoint.service.svelte.js";
+	import { isActiveLink } from "./active-link.svelte.js";
 
 	let { options }: { options?: AppShellAppHeaderOptions } = $props();
 	let showFullscreenMenu = $state(false);
@@ -38,7 +37,31 @@
 			</div>
 		</a>
 
-		<div class="flex flex-col gap-2">
+		{#snippet menuEntry(entry, extraClasses = "")}
+			<a
+				href={entry.link}
+				use:isActiveLink={"menu-entry-active"}
+				onclick={() => (showFullscreenMenu = !showFullscreenMenu)}
+			>
+				<div class="py-2 rounded-md flex flex-row gap-3 items-center {extraClasses}">
+					{#if entry.icon}
+						<i class="text-md {entry.icon}"></i>
+					{/if}
+					<span>{entry.text}</span>
+				</div>
+			</a>
+		{/snippet}
+
+		{#each options?.navigation?.entries as entry}
+			<div class="flex flex-col gap-1 w-full">
+				{@render menuEntry(entry, "p-2 text-xl")}
+				{#each entry.entries as subEntry}
+					{@render menuEntry(subEntry, "pl-8 text-lg")}
+				{/each}
+			</div>
+		{/each}
+
+		<!-- <div class="flex flex-col gap-2">
 			{#each options?.navigation?.entries as entry}
 				<div
 					class="text-2xl p-2"
@@ -57,7 +80,7 @@
 					{/each}
 				</div>
 			{/each}
-		</div>
+		</div> -->
 	</div>
 {/if}
 <div
