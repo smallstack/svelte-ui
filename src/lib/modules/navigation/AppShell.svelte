@@ -87,12 +87,12 @@
 	// add pull to refresh
 	if (browser)
 		PullToRefresh.init({
-			mainElement: document.getElementById("app-shell-main").children[0],
+			mainElement: document.getElementById("app-shell-main"),
 			onRefresh() {
 				window.location.reload();
 			},
 			shouldPullToRefresh() {
-				return !document.getElementById("app-shell-main").children[0].scrollTop;
+				return !document.getElementById("app-shell-main").scrollTop;
 			}
 		});
 </script>
@@ -108,12 +108,14 @@
 		{#if breakpointService.matches($optionsStore?.sidebar?.show)}
 			<SideNavbar options={getComputedOptions($optionsStore, "sidebar")}></SideNavbar>
 		{/if}
-		<div
-			class="overflow-auto"
-			id="app-shell-main"
-			style="height: {$statsStore.mainContentHeight}px; width: {$statsStore.mainContentWidth}px;"
-		>
-			{@render children()}
+		<div class="flex flex-col">
+			<div
+				class="overflow-auto"
+				id="app-shell-main"
+				style="height: {$statsStore.mainContentHeight}px; width: {$statsStore.mainContentWidth}px;"
+			>
+				{@render children()}
+			</div>
 		</div>
 	</div>
 	{#if breakpointService.matches($optionsStore?.tabBar?.show)}
