@@ -71,9 +71,9 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
+		"@sveltejs/kit": "^2.5.18",
 		"daisyui": "^4.12.2",
-		"svelte": "^5.0.0-next.1",
-		"@sveltejs/kit": "^2.5.18"
+		"svelte": "^5.0.0-next.1"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
@@ -105,7 +105,8 @@
 	"type": "module",
 	"dependencies": {
 		"@floating-ui/dom": "^1.6.5",
-		"date-fns": "^3.6.0"
+		"date-fns": "^3.6.0",
+		"pulltorefreshjs": "^0.1.22"
 	},
 	"volta": {
 		"node": "20.15.0"
