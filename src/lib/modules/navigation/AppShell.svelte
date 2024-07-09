@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { afterNavigate } from "$app/navigation";
+	import PullToRefresh from "pulltorefreshjs";
 	import { setContext } from "svelte";
-	import { get, writable } from "svelte/store";
+	import { writable } from "svelte/store";
 	import {
 		APP_SHELL_OPTIONS,
 		APP_SHELL_STATS,
@@ -13,7 +15,7 @@
 	import Navbar from "./Navbar.svelte";
 	import SideNavbar from "./SideNavbar.svelte";
 	import TabBar from "./TabBar.svelte";
-	import { afterNavigate } from "$app/navigation";
+	import { browser } from "$app/environment";
 
 	let defaults: AppShellOptions = {
 		bgColor: "oklch(var(--p))",
@@ -81,6 +83,18 @@
 	afterNavigate(() => {
 		document.getElementById("app-shell-main").scrollTo(0, 0);
 	});
+
+	// add pull to refresh
+	if (browser)
+		PullToRefresh.init({
+			mainElement: document.getElementById("app-shell-main").children[0],
+			onRefresh() {
+				window.location.reload();
+			},
+			shouldPullToRefresh() {
+				return !document.getElementById("app-shell-main").children[0].scrollTop;
+			}
+		});
 </script>
 
 <div class="w-svw h-svh relative">
