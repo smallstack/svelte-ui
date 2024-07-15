@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from "$app/environment";
 	import { afterNavigate } from "$app/navigation";
 	import PullToRefresh from "pulltorefreshjs";
 	import { setContext } from "svelte";
@@ -15,7 +16,6 @@
 	import Navbar from "./Navbar.svelte";
 	import SideNavbar from "./SideNavbar.svelte";
 	import TabBar from "./TabBar.svelte";
-	import { browser } from "$app/environment";
 
 	let defaults: AppShellOptions = {
 		bgColor: "oklch(var(--p))",
@@ -33,12 +33,12 @@
 			show: false,
 			showMenuTriggerLeft: false,
 			showMenuTriggerRight: true,
-			useSafeArea: true,
+			useSafeArea: true
 		},
 		tabBar: {
 			show: false,
 			height: 64
-		} 
+		}
 	};
 
 	let { children, options }: { children: any; options: AppShellOptions } = $props();
@@ -80,6 +80,18 @@
 	});
 	setContext(APP_SHELL_STATS, statsStore);
 
+	// add safe area padding
+	let containerHeight = $state(
+		breakpointService.matches($optionsStore?.tabBar?.show)
+			? "height: calc(100lvh - env(safe-area-inset-bottom))"
+			: "height: 100lvh; padding-bottom: env(safe-area-inset-bottom)"
+	);
+	let contentHeight = $state(
+		breakpointService.matches($optionsStore?.tabBar?.show)
+			? `height: calc(${$statsStore.mainContentHeight}px - env(safe-area-inset-bottom))`
+			: "height: ${$statsStore.mainContentHeight}px; padding-bottom: env(safe-area-inset-bottom)"
+	);
+
 	// scroll main to top after navigation
 	afterNavigate(() => {
 		document.getElementById("app-shell-main").scrollTo(0, 0);
@@ -98,14 +110,14 @@
 		});
 </script>
 
-<div class="w-lvw relative" style="{breakpointService.matches($optionsStore?.tabBar?.show) ? "height: calc(100lvh - env(safe-area-inset-bottom))" : "height: 100lvh; padding-bottom: env(safe-area-inset-bottom)"}">
+<div class="w-lvw h-lvh relative" style={containerHeight}>
 	{#if breakpointService.matches($optionsStore?.appHeader?.show)}
 		<AppHeader options={getComputedOptions($optionsStore, "appHeader")}></AppHeader>
 	{/if}
 	{#if breakpointService.matches($optionsStore?.navbar?.show)}
 		<Navbar options={getComputedOptions($optionsStore, "navbar")}></Navbar>
 	{/if}
-	<div class="flex flex-row overflow-hidden" style="height: {$statsStore.mainContentHeight}px">
+	<div class="flex flex-row overflow-hidden" style={contentHeight}>
 		{#if breakpointService.matches($optionsStore?.sidebar?.show)}
 			<SideNavbar options={getComputedOptions($optionsStore, "sidebar")}></SideNavbar>
 		{/if}
