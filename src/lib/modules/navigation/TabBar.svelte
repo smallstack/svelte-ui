@@ -9,12 +9,17 @@
 	let middleEntry = entries[middleIndex];
 	let rightEntries = entries.slice(middleIndex + 1);
 
-	let paddingBottomWithSafeArea = options.useSafeArea !== false ? "padding-bottom: env(safe-area-inset-bottom)" : "";
+	let paddingBottomWithSafeArea =
+		options.useSafeArea !== false ? "padding-bottom: env(safe-area-inset-bottom)" : "";
+	let tabBarHeight = $state(
+		`calc(${options.height ? options.height : 64}px + env(safe-area-inset-bottom))`
+	);
 </script>
+
 {#snippet entryAnchor(entry: NavigationEntry)}
 	<a href={entry.link} onclick={entry.clickFn} class="cursor-pointer">
 		<div class="flex flex-col gap-0 justify-center items-center">
-			<i class="{options.showText ? "text-xl" : "text-2xl"} {entry.icon}"></i>
+			<i class="{options.showText ? 'text-xl' : 'text-2xl'} {entry.icon}"></i>
 			{#if options.showText === true}
 				<div>{entry.text}</div>
 			{/if}
@@ -25,8 +30,7 @@
 {#if options.showSuperBtn}
 	<div
 		class="flex flex-row"
-		style="background-color: {options.bgColor}; color: {options.textColor}; height:{options.height ||
-			64}px; --navbarBgColor: {options.bgColor}; --navbarTextColor: {options.textColor}; {paddingBottomWithSafeArea}"
+		style="background-color: {options.bgColor}; color: {options.textColor}; height:{tabBarHeight}; --navbarBgColor: {options.bgColor}; --navbarTextColor: {options.textColor}; {paddingBottomWithSafeArea}"
 	>
 		<div class="flex flex-row gap-2 w-full justify-evenly items-center p-4 pr-6 pl-2">
 			{#each leftEntries as entry}
