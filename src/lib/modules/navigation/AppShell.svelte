@@ -86,7 +86,7 @@
 			? "height: calc(100lvh - env(safe-area-inset-bottom))"
 			: "height: 100lvh; padding-bottom: env(safe-area-inset-bottom)"
 	);
-	let contentHeight = $state(
+	let contentHeight = $derived(
 		breakpointService.matches($optionsStore?.tabBar?.show)
 			? `height: calc(${$statsStore.mainContentHeight}px - env(safe-area-inset-bottom))`
 			: `height: ${$statsStore.mainContentHeight}px; padding-bottom: env(safe-area-inset-bottom)`
