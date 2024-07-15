@@ -32,12 +32,13 @@
 		appHeader: {
 			show: false,
 			showMenuTriggerLeft: false,
-			showMenuTriggerRight: true
+			showMenuTriggerRight: true,
+			useSafeArea: true,
 		},
 		tabBar: {
 			show: false,
 			height: 64
-		}
+		} 
 	};
 
 	let { children, options }: { children: any; options: AppShellOptions } = $props();
@@ -97,7 +98,7 @@
 		});
 </script>
 
-<div class="w-svw h-svh relative">
+<div class="w-lvw h-lvh relative" style="{breakpointService.matches($optionsStore?.tabBar?.show) ? "" : "padding-bottom: env(safe-area-inset-bottom)"}">
 	{#if breakpointService.matches($optionsStore?.appHeader?.show)}
 		<AppHeader options={getComputedOptions($optionsStore, "appHeader")}></AppHeader>
 	{/if}

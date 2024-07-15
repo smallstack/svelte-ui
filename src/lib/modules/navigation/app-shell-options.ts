@@ -32,6 +32,7 @@ export interface AppShellAppHeaderOptions extends AppShellGlobalOptions {
 	height?: number;
 	showMenuTriggerRight?: boolean | string[];
 	showMenuTriggerLeft?: boolean | string[];
+	useSafeArea?: boolean;
 }
 
 export interface AppShellTabBarOptions extends AppShellGlobalOptions {
@@ -40,6 +41,7 @@ export interface AppShellTabBarOptions extends AppShellGlobalOptions {
 	/** show the text below the icons */
 	showText?: boolean;
 	showSuperBtn?: boolean;
+	useSafeArea?: boolean;
 }
 
 export interface AppShellOptions extends AppShellGlobalOptions {

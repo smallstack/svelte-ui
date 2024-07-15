@@ -17,7 +17,7 @@
 {#if showFullscreenMenu}
 	<div
 		class="fixed top-0 left-0 right-0 bottom-0 z-50 p-8 overflow-x-hidden overflow-y-auto"
-		style="background-color: {options?.bgColor}; color: {options?.textColor};"
+		style="background-color: {options?.bgColor}; color: {options?.textColor}; {options.useSafeArea === true ? "padding-top: env(safe-area-inset-top)" : ""}"
 		transition:fly={{ duration: 250 }}
 	>
 		<div class="flex flex-row gap-2 justify-end">
@@ -85,8 +85,8 @@
 {/if}
 <div
 	class="w-full flex flex-row gap-2 justify-between items-center p-2"
-	style="background-color: {options?.bgColor}; color: {options?.textColor}; height:{options.height ||
-		64}px;"
+	style="background-color: {options?.bgColor}; color: {options?.textColor}; height:calc({options.height ||
+		64} + {options.useSafeArea === true ? "env(safe-area-inset-top)" : "0‚"});{options.useSafeArea === true ? "padding-top: env(safe-area-inset-top)" : ""}"
 >
 	<div class="w-16">
 		{#if breakpointService.matches(options.showMenuTriggerLeft)}
