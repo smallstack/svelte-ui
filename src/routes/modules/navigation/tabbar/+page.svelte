@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ComponentPlayground from "$lib/docs/ComponentPlayground.svelte";
+	import ComponentSubHeader from "$lib/docs/ComponentSubHeader.svelte";
 	import type { AppShellTabBarOptions } from "$lib/index.js";
 	import TabBar from "$lib/modules/navigation/TabBar.svelte";
 
@@ -48,3 +49,13 @@
 	</div>
 	<TabBar options={iconsAndSuperBtnOptions}></TabBar>
 </ComponentPlayground>
+
+<ComponentSubHeader title="Safe Areas" />
+If the TabBar component is used within an AppShell component, it will automatically adjust to the safe
+areas of the device. Otherwise the AppShell component itself will add the safe areas to itself at the
+bottom.
+<p>
+	To see the safe areas in action, go to this page with a device that uses save areas: <a class="btn btn-primary"
+		href="/modules/navigation/tabbar/fullscreen-example">TabBar Fullscreen Example</a
+	>
+</p>

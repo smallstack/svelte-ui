@@ -83,7 +83,8 @@
 		},
 		appHeader: {
 			show: [BREAKPOINTS.XS, BREAKPOINTS.SM],
-			showMenuTriggerRight: true
+			showMenuTriggerRight: true,
+			useSafeArea: true
 		},
 		navigation
 	};
