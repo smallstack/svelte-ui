@@ -89,7 +89,7 @@
 	let contentHeight = $state(
 		breakpointService.matches($optionsStore?.tabBar?.show)
 			? `height: calc(${$statsStore.mainContentHeight}px - env(safe-area-inset-bottom))`
-			: "height: ${$statsStore.mainContentHeight}px; padding-bottom: env(safe-area-inset-bottom)"
+			: `height: ${$statsStore.mainContentHeight}px; padding-bottom: env(safe-area-inset-bottom)`
 	);
 
 	// scroll main to top after navigation
