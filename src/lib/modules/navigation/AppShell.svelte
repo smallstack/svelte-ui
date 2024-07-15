@@ -98,7 +98,7 @@
 		});
 </script>
 
-<div class="w-lvw h-lvh relative" style="{breakpointService.matches($optionsStore?.tabBar?.show) ? "" : "padding-bottom: env(safe-area-inset-bottom)"}">
+<div class="w-lvw relative" style="{breakpointService.matches($optionsStore?.tabBar?.show) ? "height: calc(100lvh - env(safe-area-inset-bottom))" : "height: 100lvh; padding-bottom: env(safe-area-inset-bottom)"}">
 	{#if breakpointService.matches($optionsStore?.appHeader?.show)}
 		<AppHeader options={getComputedOptions($optionsStore, "appHeader")}></AppHeader>
 	{/if}
