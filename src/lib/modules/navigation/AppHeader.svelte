@@ -86,7 +86,7 @@
 <div
 	class="w-full flex flex-row gap-2 justify-between items-center p-2"
 	style="background-color: {options?.bgColor}; color: {options?.textColor}; height:calc({options.height ||
-		64} + {options.useSafeArea === true ? "env(safe-area-inset-top)" : "0"});{options.useSafeArea === true ? "padding-top: env(safe-area-inset-top)" : ""}"
+		64}px + {options.useSafeArea === true ? "env(safe-area-inset-top)" : "0px"});{options.useSafeArea === true ? "padding-top: env(safe-area-inset-top)" : ""}"
 >
 	<div class="w-16">
 		{#if breakpointService.matches(options.showMenuTriggerLeft)}
