@@ -1,6 +1,6 @@
 import { browser } from "$app/environment";
-import { beforeNavigate } from "$app/navigation";
-import type { BeforeNavigate } from "@sveltejs/kit";
+import { afterNavigate } from "$app/navigation";
+import type { AfterNavigate } from "@sveltejs/kit";
 
 export interface ActiveLinkOptions {
 	activeClass: string;
@@ -18,7 +18,7 @@ export function isActiveLink(node: HTMLAnchorElement, options: ActiveLinkOptions
 			} else node.classList.remove(options.activeClass);
 		}
 	}
-	beforeNavigate((navigation: BeforeNavigate) => {
+	afterNavigate((navigation: AfterNavigate) => {
 		checkHref(navigation.to.url.pathname);
 	});
 	if (browser) checkHref(location.pathname);
