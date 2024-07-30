@@ -5,7 +5,7 @@
 
 <ComponentHeader
 	title="Svelte UI"
-	description="Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and as web components. 
+	description="Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module. 
 "
 />
 
@@ -23,9 +23,9 @@ This UI library is based on
 We built this library because at the time of creation there were no libraries that supported Svelte 5,
 DaisyUI as well as all needed Forms Inputs.
 
-<ComponentSubHeader title="Web Components"></ComponentSubHeader>
+<!-- <ComponentSubHeader title="Web Components"></ComponentSubHeader>
 Since this library is also used in legacy stacks (Angular/React projects) all components are also available
-as web components.
+as web components. -->
 
 <ComponentSubHeader title="License"></ComponentSubHeader>
 MIT
