@@ -4,7 +4,7 @@
 </script>
 
 <div
-	class="w-full flex flex-row gap-2 justify-between items-center p-4"
+	class="w-full flex flex-row gap-2 justify-between items-center"
 	style="background-color: {options?.bgColor}; color: {options?.textColor}; height:{options.height ||
 		64}px; --navbarBgColor: {options?.bgColor}; --navbarTextColor: {options?.textColor}"
 >

@@ -17,7 +17,10 @@
 {#if showFullscreenMenu}
 	<div
 		class="fixed top-0 left-0 right-0 bottom-0 z-50 p-8 overflow-x-hidden overflow-y-auto"
-		style="background-color: {options?.bgColor}; color: {options?.textColor}; {options.useSafeArea === true ? "padding-top: env(safe-area-inset-top)" : ""}"
+		style="background-color: {options?.bgColor}; color: {options?.textColor}; {options.useSafeArea ===
+		true
+			? 'padding-top: env(safe-area-inset-top)'
+			: ''}"
 		transition:fly={{ duration: 250 }}
 	>
 		<div class="flex flex-row gap-2 justify-end">
@@ -40,7 +43,7 @@
 		{#snippet menuEntry(entry, extraClasses = "")}
 			<a
 				href={entry.link}
-				use:isActiveLink={"menu-entry-active"}
+				use:isActiveLink={{ activeClass: "menu-entry-active" }}
 				onclick={() => (showFullscreenMenu = !showFullscreenMenu)}
 			>
 				<div class="py-2 rounded-md flex flex-row gap-3 items-center {extraClasses}">
@@ -84,9 +87,11 @@
 	</div>
 {/if}
 <div
-	class="w-full flex flex-row gap-2 justify-between items-center p-2"
+	class="w-full flex flex-row gap-2 justify-between items-center"
 	style="background-color: {options?.bgColor}; color: {options?.textColor}; height:calc({options.height ||
-		64}px + {options.useSafeArea === true ? "env(safe-area-inset-top)" : "0px"});{options.useSafeArea === true ? "padding-top: env(safe-area-inset-top)" : ""}"
+		64}px + {options.useSafeArea === true
+		? 'env(safe-area-inset-top)'
+		: '0px'});{options.useSafeArea === true ? 'padding-top: env(safe-area-inset-top)' : ''}"
 >
 	<div class="w-16">
 		{#if breakpointService.matches(options.showMenuTriggerLeft)}
