@@ -24,7 +24,7 @@
 	{/if}
 
 	{#snippet menuEntry(entry, extraClasses = "")}
-		<a href={entry.link} use:isActiveLink={"menu-entry-active"}>
+		<a href={entry.link} use:isActiveLink={{ activeClass: "menu-entry-active" }}>
 			<div class="p-2 rounded-md flex flex-row gap-3 items-center {extraClasses}">
 				{#if entry.icon}
 					<i class="text-md {entry.icon}"></i>
