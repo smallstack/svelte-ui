@@ -17,6 +17,7 @@ This UI library is based on
 	<li>Free Fontawesome Icons</li>
 	<li>@floating-ui/dom</li>
 	<li>date-fns</li>
+	<li>i18next</li>
 </div>
 
 <ComponentSubHeader title="Purpose"></ComponentSubHeader>
