@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { type AppShellNavbarOptions } from "./app-shell-options.js";
+	import { t } from "$lib/stores/i18n.store.js";
 	let { options }: { options?: AppShellNavbarOptions } = $props();
 </script>
 
@@ -22,7 +23,7 @@
 		{#if options?.showNavigation}
 			{#each options?.navigation.entries as entry}
 				<a class="border-b-2 menu-entry" href={entry.link}>
-					{entry.text}
+					{$t(entry.text)}
 				</a>
 			{/each}
 		{/if}

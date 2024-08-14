@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from "$lib/stores/i18n.store.js";
 	import { type AppShellTabBarOptions } from "./app-shell-options.js";
 	import type { NavigationEntry } from "./navigation.js";
 	let { options }: { options: AppShellTabBarOptions } = $props();
@@ -21,7 +22,7 @@
 		<div class="flex flex-col gap-0 justify-center items-center">
 			<i class="{options.showText ? 'text-xl' : 'text-2xl'} {entry.icon}"></i>
 			{#if options.showText === true}
-				<div>{entry.text}</div>
+				<div>{$t(entry.text)}</div>
 			{/if}
 		</div>
 	</a>
@@ -49,7 +50,7 @@
 				</a>
 				{#if middleEntry.text}
 					<div class="text-center relative bottom-2 w-20">
-						<span class="truncate">{middleEntry.text}</span>
+						<span class="truncate">{$t(middleEntry.text)}</span>
 					</div>
 				{/if}
 			</div>
