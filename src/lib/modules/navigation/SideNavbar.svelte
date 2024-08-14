@@ -1,8 +1,11 @@
 <script lang="ts">
+	import { getI18n } from "$lib/stores/i18n.js";
 	import { isActiveLink } from "./active-link.svelte.js";
 	import { type AppShellSidebarOptions } from "./app-shell-options.js";
 
 	let { options }: { options?: AppShellSidebarOptions } = $props();
+
+	const i18n = getI18n();
 </script>
 
 <div
@@ -35,7 +38,7 @@
 				{#if entry.icon}
 					<i class="text-md {entry.icon}"></i>
 				{/if}
-				<span>{entry.text}</span>
+				<span>{$i18n.t(entry.text)}</span>
 			</div>
 		</a>
 	{/snippet}

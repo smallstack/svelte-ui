@@ -3,8 +3,11 @@
 	import AppShell from "$lib/modules/navigation/AppShell.svelte";
 	import { BREAKPOINTS, MD_AND_UP } from "$lib/modules/navigation/breakpoint.service.svelte.js";
 	import type { Navigation } from "$lib/modules/navigation/navigation.js";
+	import { initI18n } from "$lib/stores/i18n.js";
 	import "tailwindcss/tailwind.css";
 	import "../app.css";
+
+	initI18n();
 
 	let navigation: Navigation = {
 		entries: [
@@ -14,11 +17,11 @@
 				link: "/",
 				entries: [
 					{
-						text: "About",
+						text: "navigation.about",
 						link: "/"
 					},
 					{
-						text: "Install",
+						text: "navigation.gettingStarted",
 						link: "/install"
 					}
 				]
