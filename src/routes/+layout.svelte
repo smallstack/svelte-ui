@@ -7,7 +7,25 @@
 	import "tailwindcss/tailwind.css";
 	import "../app.css";
 
-	initI18n();
+	initI18n({
+		resources: {
+			de: {
+				translation: {
+					navigation: {
+						about: "Über"
+					}
+				}
+			},
+			en: {
+				translation: {
+					navigation: {
+						about: "About",
+						gettingStarted: "Getting Started"
+					}
+				}
+			}
+		}
+	});
 
 	let navigation: Navigation = {
 		entries: [
@@ -17,7 +35,7 @@
 				link: "/",
 				entries: [
 					{
-						text: "navigation.about",
+						text: { de: "Über", en: "About" },
 						link: "/"
 					},
 					{
