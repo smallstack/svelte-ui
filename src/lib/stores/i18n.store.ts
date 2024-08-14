@@ -1,12 +1,11 @@
-import i18nNext from "i18next";
 import type { InitOptions } from "i18next";
+import i18nNext from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { getContext, setContext } from "svelte";
-import { createI18nStore } from "svelte-i18next";
 import type { Readable } from "svelte/store";
 import { derived, get, writable } from "svelte/store";
 
-const getI18nStore = (i18nNextOptions?: Partial<InitOptions>) => {
+export const getI18nStore = (i18nNextOptions?: Partial<InitOptions>) => {
 	i18nNext.use(LanguageDetector).init({
 		fallbackLng: "en",
 		detection: {
@@ -18,7 +17,7 @@ const getI18nStore = (i18nNextOptions?: Partial<InitOptions>) => {
 		},
 		...i18nNextOptions
 	});
-	return createI18nStore(i18nNext);
+	return derived([currentLanguage], () => i18nNext);
 };
 
 export function initI18n(i18nNextOptions?: Partial<InitOptions>) {

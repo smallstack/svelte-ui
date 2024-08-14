@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from "$lib/stores/i18n.js";
+	import { t } from "$lib/stores/i18n.store.js";
 	import { isActiveLink } from "./active-link.svelte.js";
 	import { type AppShellSidebarOptions } from "./app-shell-options.js";
 
