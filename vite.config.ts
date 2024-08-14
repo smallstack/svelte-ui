@@ -9,9 +9,6 @@ const pkg = JSON.parse(json);
 
 export default defineConfig({
 	plugins: [sveltekit()],
-	test: {
-		include: ["src/**/*.{test,spec}.{js,ts}"]
-	},
 	define: {
 		pkg: pkg
 	}

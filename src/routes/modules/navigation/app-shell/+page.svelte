@@ -3,9 +3,12 @@
 	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
 	import ComponentPlayground from "$lib/docs/ComponentPlayground.svelte";
 	import ComponentSubHeader from "$lib/docs/ComponentSubHeader.svelte";
-	import { APP_SHELL_STATS, type AppShellStats } from "$lib/index.js";
-	import type { AppShellOptions } from "$lib/modules/navigation/app-shell-options";
-	import { APP_SHELL_OPTIONS } from "$lib/modules/navigation/app-shell-options";
+	import {
+		APP_SHELL_OPTIONS,
+		APP_SHELL_STATS,
+		type AppShellOptions,
+		type AppShellStats
+	} from "$lib/index.js";
 	import { getContext } from "svelte";
 	import type { Readable, Writable } from "svelte/store";
 
@@ -49,6 +52,7 @@ You can get the stats of the App Shell by using the following code:
 
 Demo
 <ComponentPlayground>
-	<textarea class="textarea textarea-bordered w-96 h-96 text-black" bind:value={optionsAsString}></textarea>
+	<textarea class="textarea textarea-bordered w-96 h-96 text-black" bind:value={optionsAsString}
+	></textarea>
 	{#if error}<div class="text-error">{error}</div>{/if}
 </ComponentPlayground>

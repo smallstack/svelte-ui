@@ -36,9 +36,9 @@ export type InlineTranslation = {
 };
 
 export const currentLanguage = writable("de");
-i18nNext.on("languageChanged", (lng) => {
-	currentLanguage.set(lng);
-});
+// i18nNext.on("languageChanged", (lng) => {
+// 	currentLanguage.set(lng);
+// });
 
 export function translateInlineTranslation(
 	translation: InlineTranslation | string,

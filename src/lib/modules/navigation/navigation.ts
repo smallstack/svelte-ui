@@ -1,4 +1,4 @@
-import type { InlineTranslation } from "$lib/stores/i18n.js";
+import type { InlineTranslation } from "$lib/stores/i18n.store.js";
 import type { ActiveLinkOptions } from "./active-link.svelte.js";
 
 export interface NavigationEntry {
