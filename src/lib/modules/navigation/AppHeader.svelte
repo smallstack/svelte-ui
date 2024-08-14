@@ -3,6 +3,7 @@
 	import { type AppShellAppHeaderOptions } from "./app-shell-options.js";
 	import { breakpointService } from "./breakpoint.service.svelte.js";
 	import { isActiveLink } from "./active-link.svelte.js";
+	import { t } from "$lib/stores/i18n.store.js";
 
 	let { options }: { options?: AppShellAppHeaderOptions } = $props();
 	let showFullscreenMenu = $state(false);
@@ -50,7 +51,7 @@
 					{#if entry.icon}
 						<i class="text-md {entry.icon}"></i>
 					{/if}
-					<span>{entry.text}</span>
+					<span>{$t(entry.text)}</span>
 				</div>
 			</a>
 		{/snippet}
