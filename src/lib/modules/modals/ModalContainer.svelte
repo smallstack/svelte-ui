@@ -28,7 +28,7 @@
 	}
 
 	export function showModal(component: Component, options: ModalOptions) {
-		if (options.closingPropName) {
+		if (options?.closingPropName) {
 			if (!options.data) options.data = {};
 			options.data[options.closingPropName] = (data: any) => {
 				closeModal(data);
@@ -98,5 +98,26 @@
 	:root:has(:is(.modal-open, .modal:target, .modal-toggle:checked + .modal, .modal[open])) {
 		overflow: hidden;
 		scrollbar-gutter: unset !important;
+	}
+
+	:global {
+		.dialog {
+			@apply flex flex-col gap-4;
+			height: 100%;
+		}
+
+		.dialog-title {
+			@apply text-3xl;
+		}
+
+		.dialog-body {
+			@apply text-base;
+			height: 100%;
+			overflow: auto;
+		}
+
+		.dialog-actions {
+			@apply flex flex-row justify-end gap-2;
+		}
 	}
 </style>
