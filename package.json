@@ -1,6 +1,6 @@
 {
 	"name": "@smallstack/svelte-ui",
-	"version": "0.2.34",
+	"version": "0.2.35",
 	"description": "Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and as web components.",
 	"author": {
 		"name": "smallstack GmbH",
@@ -45,8 +45,8 @@
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
 		"version": "npm run build:wc && git add static/cdn/**",
-		"release:patch": "npm version patch && git push && git push --tags",
-		"release:minor": "npm version minor && git push && git push --tags",
+		"release:patch": "npm version patch && git push && git push --tags && npm publish",
+		"release:minor": "npm version minor && git push && git push --tags && npm publish",
 		"clean": "npm unlink -g && npm uninstall -g && rm -Rf dist .svelte-kit .vercel",
 		"link": "npm link",
 		"build:clean": "npm run clean && npm run build && npm run link",
