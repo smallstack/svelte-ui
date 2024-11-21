@@ -1,117 +1,121 @@
 {
-  "name": "@smallstack/svelte-ui",
-  "version": "0.2.32",
-  "description": "Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and as web components.",
-  "author": {
-    "name": "smallstack GmbH",
-    "email": "contact@smallstack.com"
-  },
-  "bugs": {
-    "url": "https://github.com/smallstack/svelte-ui/issues"
-  },
-  "engines": {
-    "node": ">=20.0.0"
-  },
-  "homepage": "https://svelte-ui.com",
-  "keywords": [
-    "svelte",
-    "daisyui",
-    "webcomponents",
-    "library",
-    "ui",
-    "tailwindcss"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/smallstack/svelte-ui"
-  },
-  "scripts": {
-    "dev": "vite dev --port 5174",
-    "build": "vite build && npm run package",
-    "build:wc": "npm run build && npm run build:wc:form-inputs && npm run build:wc:overlay && npm run build:wc:layout",
-    "build:wc:form-inputs": "vite -c .wc-configs/vite.form-inputs.wc.config build",
-    "build:wc:overlay": "vite -c .wc-configs/vite.overlay.wc.config build",
-    "build:wc:layout": "vite -c .wc-configs/vite.layout.wc.config build",
-    "build:wc:navigation": "vite -c .wc-configs/vite.navigation.wc.config build",
-    "preview": "vite preview",
-    "package": "svelte-kit sync && svelte-package && publint",
-    "prepublishOnly": "npm run package",
-    "test": "npm run test:integration && npm run test:unit",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --check . && eslint .",
-    "format": "prettier --write .",
-    "test:integration": "playwright test",
-    "test:unit": "vitest",
-    "version": "npm run build:wc && git add static/cdn/**",
-    "release:patch": "npm version patch && git push && git push --tags",
-    "release:minor": "npm version minor && git push && git push --tags",
-    "clean": "npm unlink -g && npm uninstall -g && rm -Rf dist .svelte-kit .vercel",
-    "link": "npm link",
-    "build:clean": "npm run clean && npm run build && npm run link",
-    "test:browser": "vitest --workspace=vitest.workspace.ts"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.js"
-    },
-    "./form-inputs": {
-      "types": "./dist/index.d.ts",
-      "svelte": "./dist/form-inputs.js"
-    },
-    "./navigation": {
-      "types": "./dist/modules/navigation/index.d.ts",
-      "svelte": "./dist/modules/navigation/index.js"
-    }
-  },
-  "files": [
-    "dist",
-    "!dist/**/*.test.*",
-    "!dist/**/*.spec.*"
-  ],
-  "devDependencies": {
-    "@playwright/test": "^1.28.1",
-    "@sveltejs/adapter-vercel": "^5.4.3",
-    "@sveltejs/package": "^2.3.4",
-    "@sveltejs/vite-plugin-svelte": "^3.1.1",
-    "@testing-library/svelte": "^5.2.1",
-    "@types/eslint": "^9.6.0",
-    "@types/node": "^20.14.8",
-    "@vitest/browser": "^2.0.5",
-    "autoprefixer": "^10.4.19",
-    "daisyui": "^4.12.10",
-    "eslint": "^9.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-svelte": "^2.36.0",
-    "globals": "^15.0.0",
-    "playwright": "^1.46.0",
-    "postcss": "^8.4.38",
-    "prettier": "^3.1.1",
-    "prettier-plugin-svelte": "^3.1.2",
-    "publint": "^0.2.8",
-    "svelte-check": "^3.8.5",
-    "tailwindcss": "^3.4.4",
-    "tslib": "^2.4.1",
-    "typescript": "^5.0.0",
-    "typescript-eslint": "^8.0.0-alpha.20",
-    "vite": "^5.4.0",
-    "vitest": "^2.0.5"
-  },
-  "types": "./dist/index.d.ts",
-  "type": "module",
-  "dependencies": {
-    "@floating-ui/dom": "^1.6.5",
-    "@sveltejs/kit": "^2.5.22",
-    "date-fns": "^3.6.0",
-    "i18next": "^23.12.3",
-    "i18next-browser-languagedetector": "^8.0.0",
-    "pulltorefreshjs": "^0.1.22",
-    "svelte": "^5.0.0-next.220",
-    "svelte-i18next": "^2.2.2"
-  },
-  "volta": {
-    "node": "20.16.0"
-  }
+	"name": "@smallstack/svelte-ui",
+	"version": "0.2.32",
+	"description": "Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and as web components.",
+	"author": {
+		"name": "smallstack GmbH",
+		"email": "contact@smallstack.com"
+	},
+	"bugs": {
+		"url": "https://github.com/smallstack/svelte-ui/issues"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"homepage": "https://svelte-ui.com",
+	"keywords": [
+		"svelte",
+		"daisyui",
+		"webcomponents",
+		"library",
+		"ui",
+		"tailwindcss"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/smallstack/svelte-ui"
+	},
+	"scripts": {
+		"dev": "vite dev --port 5174",
+		"build": "vite build && npm run package",
+		"build:wc": "npm run build && npm run build:wc:form-inputs && npm run build:wc:overlay && npm run build:wc:layout",
+		"build:wc:form-inputs": "vite -c .wc-configs/vite.form-inputs.wc.config build",
+		"build:wc:overlay": "vite -c .wc-configs/vite.overlay.wc.config build",
+		"build:wc:layout": "vite -c .wc-configs/vite.layout.wc.config build",
+		"build:wc:navigation": "vite -c .wc-configs/vite.navigation.wc.config build",
+		"preview": "vite preview",
+		"package": "svelte-kit sync && svelte-package && publint",
+		"prepublishOnly": "npm run package",
+		"test": "npm run test:integration && npm run test:unit",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"test:integration": "playwright test",
+		"test:unit": "vitest",
+		"version": "npm run build:wc && git add static/cdn/**",
+		"release:patch": "npm version patch && git push && git push --tags",
+		"release:minor": "npm version minor && git push && git push --tags",
+		"clean": "npm unlink -g && npm uninstall -g && rm -Rf dist .svelte-kit .vercel",
+		"link": "npm link",
+		"build:clean": "npm run clean && npm run build && npm run link",
+		"test:browser": "vitest --workspace=vitest.workspace.ts"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		},
+		"./form-inputs": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/form-inputs.js"
+		},
+		"./navigation": {
+			"types": "./dist/modules/navigation/index.d.ts",
+			"svelte": "./dist/modules/navigation/index.js"
+		},
+		"./modals": {
+			"types": "./dist/modules/modals/index.d.ts",
+			"svelte": "./dist/modules/modals/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"devDependencies": {
+		"@playwright/test": "^1.28.1",
+		"@sveltejs/adapter-vercel": "^5.4.3",
+		"@sveltejs/package": "^2.3.4",
+		"@sveltejs/vite-plugin-svelte": "^3.1.1",
+		"@testing-library/svelte": "^5.2.1",
+		"@types/eslint": "^9.6.0",
+		"@types/node": "^20.14.8",
+		"@vitest/browser": "^2.0.5",
+		"autoprefixer": "^10.4.19",
+		"daisyui": "^4.12.10",
+		"eslint": "^9.0.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.36.0",
+		"globals": "^15.0.0",
+		"playwright": "^1.46.0",
+		"postcss": "^8.4.38",
+		"prettier": "^3.1.1",
+		"prettier-plugin-svelte": "^3.1.2",
+		"publint": "^0.2.8",
+		"svelte-check": "^3.8.5",
+		"tailwindcss": "^3.4.4",
+		"tslib": "^2.4.1",
+		"typescript": "^5.0.0",
+		"typescript-eslint": "^8.0.0-alpha.20",
+		"vite": "^5.4.0",
+		"vitest": "^2.0.5"
+	},
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"dependencies": {
+		"@floating-ui/dom": "^1.6.5",
+		"@sveltejs/kit": "^2.5.22",
+		"date-fns": "^3.6.0",
+		"i18next": "^23.12.3",
+		"i18next-browser-languagedetector": "^8.0.0",
+		"pulltorefreshjs": "^0.1.22",
+		"svelte": "^5.0.0-next.220",
+		"svelte-i18next": "^2.2.2"
+	},
+	"volta": {
+		"node": "20.16.0"
+	}
 }
