@@ -68,6 +68,10 @@
 		"./modals": {
 			"types": "./dist/modules/modals/index.d.ts",
 			"svelte": "./dist/modules/modals/index.js"
+		},
+		"./utils": {
+			"types": "./dist/modules/utils/index.d.ts",
+			"svelte": "./dist/modules/utils/index.js"
 		}
 	},
 	"files": [
