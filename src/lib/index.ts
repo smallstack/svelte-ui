@@ -1,6 +1,7 @@
-export * from "./form-inputs.js";
-export * from "./layout.js";
-export * from "./modules/navigation/index.js";
-export * from "./overlay.js";
-export * from "./stores/i18n.store.js";
+export * from "./form-inputs";
+export * from "./layout";
+export * from "./modules/modals";
+export * from "./modules/navigation/index";
+export * from "./overlay";
+export * from "./stores/i18n.store";
 
