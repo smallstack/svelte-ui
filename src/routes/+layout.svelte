@@ -55,6 +55,16 @@
 				]
 			},
 			{
+				text: "Modals Module",
+				icon: "fas fa-window-restore",
+				entries: [
+					{
+						text: "Modal Service",
+						link: "/modules/modals/modal-service"
+					}
+				]
+			},
+			{
 				text: "Navigation Module",
 				icon: "fas fa-compass",
 				entries: [
