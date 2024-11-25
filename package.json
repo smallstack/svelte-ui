@@ -10,7 +10,7 @@
 		"url": "https://github.com/smallstack/svelte-ui/issues"
 	},
 	"engines": {
-		"node": ">=20.0.0"
+		"node": "20"
 	},
 	"homepage": "https://svelte-ui.com",
 	"keywords": [
@@ -43,7 +43,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
-		"test:unit": "vitest",
+		"test:unit": "vitest --coverage",
 		"version": "npm run build:wc && git add static/cdn/**",
 		"release:patch": "npm version patch && git push && git push --tags",
 		"release:minor": "npm version minor && git push && git push --tags",
@@ -80,6 +80,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"devDependencies": {
+		"@codecov/sveltekit-plugin": "^1.4.0",
 		"@playwright/test": "^1.49.0",
 		"@sveltejs/adapter-vercel": "^5.4.7",
 		"@sveltejs/package": "^2.3.7",
@@ -88,6 +89,7 @@
 		"@types/eslint": "^9.6.0",
 		"@types/node": "^22.9.1",
 		"@vitest/browser": "^2.1.5",
+		"@vitest/coverage-v8": "^2.1.5",
 		"autoprefixer": "^10.4.19",
 		"daisyui": "^4.12.14",
 		"eslint": "^9.0.0",
@@ -121,5 +123,10 @@
 	},
 	"volta": {
 		"node": "20.16.0"
+	},
+	"overrides": {
+		"@codecov/sveltekit-plugin": {
+			"svelte": "^5.0.0"
+		}
 	}
 }
