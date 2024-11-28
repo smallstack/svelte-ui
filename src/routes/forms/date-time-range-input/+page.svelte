@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
 	import ComponentPlayground from "$lib/docs/ComponentPlayground.svelte";
-	import DateTimeRangeInput from "$lib/form-inputs/date-time-range-input/DateTimeRangeInput.svelte";
+	import { DateTimeRangeInput } from "$lib/modules/forms";
 
 	let from: number;
 	let to: number;
@@ -27,6 +27,11 @@
 
 <ComponentPlayground title="As Web Component">
 	<div class="max-w-md">
-		<iframe src="/wc-examples/date-time-range-input.html" width="600px" height="400px" title="Date Time Range Input as web component"></iframe>
+		<iframe
+			src="/wc-examples/date-time-range-input.html"
+			width="600px"
+			height="400px"
+			title="Date Time Range Input as web component"
+		></iframe>
 	</div>
 </ComponentPlayground>

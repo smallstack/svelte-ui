@@ -57,17 +57,21 @@
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		},
-		"./form-inputs": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/form-inputs.js"
+		"./forms": {
+			"types": "./dist/modules/forms/index.d.ts",
+			"svelte": "./dist/modules/forms/index.js"
 		},
-		"./navigation": {
-			"types": "./dist/modules/navigation/index.d.ts",
-			"svelte": "./dist/modules/navigation/index.js"
+		"./layout": {
+			"types": "./dist/modules/layout/index.d.ts",
+			"svelte": "./dist/modules/layout/index.js"
 		},
 		"./modals": {
 			"types": "./dist/modules/modals/index.d.ts",
 			"svelte": "./dist/modules/modals/index.js"
+		},
+		"./navigation": {
+			"types": "./dist/modules/navigation/index.d.ts",
+			"svelte": "./dist/modules/navigation/index.js"
 		},
 		"./utils": {
 			"types": "./dist/modules/utils/index.d.ts",

@@ -2,7 +2,7 @@
 	import ComponentCode from "$lib/docs/ComponentCode.svelte";
 	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
 	import ComponentPlayground from "$lib/docs/ComponentPlayground.svelte";
-	import Overlay from "$lib/overlay/Overlay.svelte";
+	import Overlay from "$lib/modules/layout/overlay/Overlay.svelte";
 </script>
 
 <ComponentHeader
