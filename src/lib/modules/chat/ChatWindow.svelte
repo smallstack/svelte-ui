@@ -1,3 +1,15 @@
+<svelte:options
+	customElement={{
+		tag: "sui-chat-window",
+		shadow: "none",
+		props: {
+			messages: { type: "Array" },
+			users: { type: "Array" },
+			meId: { type: "String" }
+		}
+	}}
+/>
+
 <script lang="ts">
 	import Date from "../utils/date/Date.svelte";
 	import type { ChatMessage, ChatUser } from "./chat-message";
