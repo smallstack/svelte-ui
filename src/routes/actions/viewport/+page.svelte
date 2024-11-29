@@ -2,7 +2,7 @@
 	import ComponentCode from "$lib/docs/ComponentCode.svelte";
 	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
 	import ComponentSubHeader from "$lib/docs/ComponentSubHeader.svelte";
-	import InViewport from "$lib/in-viewport/InViewport.svelte";
+	import { InViewport } from "$lib/modules/layout";
 
 	function inViewportEvent(event) {
 		console.log("InViewport Event: ", event.detail);

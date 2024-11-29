@@ -16,7 +16,7 @@
 		DEFAULT_GERMAN_HUMAN_DATE_TIME_FORMAT_WITH_SECONDS,
 		DEFAULT_HTML5_DATE_TIME_FORMAT
 	} from "$lib/constants/date.constants.js";
-	import Overlay from "$lib/overlay/Overlay.svelte";
+	import Overlay from "$lib/modules/layout/overlay/Overlay.svelte";
 	import {
 		add,
 		endOfDay,
@@ -112,7 +112,7 @@
 	<input
 		placeholder="bis"
 		type="string"
-		class="input input-bordered w-full join-item  min-w-32"
+		class="input input-bordered w-full join-item min-w-32"
 		readonly
 		value={inputToFormatted()}
 		onclick={() => inputToPicker.showPicker()}
