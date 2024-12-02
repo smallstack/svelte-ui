@@ -90,7 +90,7 @@
 		"@playwright/test": "^1.49.0",
 		"@sveltejs/adapter-vercel": "^5.4.7",
 		"@sveltejs/package": "^2.3.7",
-		"@sveltejs/vite-plugin-svelte": "^4.0.1",
+		"@sveltejs/vite-plugin-svelte": "^5.0.1",
 		"@testing-library/svelte": "^5.2.6",
 		"@types/eslint": "^9.6.0",
 		"@types/node": "^22.9.1",
