@@ -3,7 +3,7 @@
 		tag: "sui-chat-window",
 		shadow: "none",
 		props: {
-			messages: { type: "Array" },
+			messages: { type: "Array", reflect: true },
 			users: { type: "Array" },
 			meId: { type: "String" }
 		}
