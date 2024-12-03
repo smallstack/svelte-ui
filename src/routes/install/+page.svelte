@@ -2,6 +2,8 @@
 	import ComponentCode from "$lib/docs/ComponentCode.svelte";
 	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
 	import ComponentSubHeader from "$lib/docs/ComponentSubHeader.svelte";
+
+	let selectedTab = "Vanilla";
 </script>
 
 <ComponentHeader
@@ -41,21 +43,57 @@
 			class="tab"
 			aria-label="Vanilla"
 			checked
+			onchange={() => (selectedTab = "Vanilla")}
 		/>
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 			<pre>&lt;script type=&quot;module&quot; src=&quot;https://cdn.skypack.dev/@smallstack/svelte-ui&quot;&gt;&lt;/script&gt;
 &lt;sui-table&gt;&lt;/sui-table&gt;
 			</pre>
 		</div>
-		<input type="radio" name="install-wc-tabs" role="tab" class="tab" aria-label="Angular" />
+		<input
+			type="radio"
+			name="install-wc-tabs"
+			role="tab"
+			class="tab"
+			aria-label="Angular"
+			onchange={() => (selectedTab = "Angular")}
+		/>
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<pre>TBD</pre>
+			{#if selectedTab === "Angular"}
+				<iframe
+					src="https://stackblitz.com/edit/sui-message-thread-wc-angular?file=src%2Fmain.ts"
+					width="100%"
+					height="600px"
+					title="Chat Window as a custom element"
+				></iframe>
+			{/if}
 		</div>
-		<input type="radio" name="install-wc-tabs" role="tab" class="tab" aria-label="React" />
+		<input
+			type="radio"
+			name="install-wc-tabs"
+			role="tab"
+			class="tab"
+			aria-label="React"
+			onchange={() => (selectedTab = "React")}
+		/>
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-			<pre>TBD</pre>
+			{#if selectedTab === "React"}
+				<iframe
+					src="https://stackblitz.com/edit/sui-message-thread-wc-react?file=src%2FApp.jsx"
+					width="100%"
+					height="600px"
+					title="Chat Window as a custom element"
+				></iframe>
+			{/if}
 		</div>
-		<input type="radio" name="install-wc-tabs" role="tab" class="tab" aria-label="Vue" />
+		<input
+			type="radio"
+			name="install-wc-tabs"
+			role="tab"
+			class="tab"
+			aria-label="Vue"
+			onchange={() => (selectedTab = "Vue")}
+		/>
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 			<pre>TBD</pre>
 		</div>

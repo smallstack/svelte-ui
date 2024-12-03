@@ -39,15 +39,15 @@
 </script>
 
 <div class="w-full h-full overflow-hidden overflow-y-auto" use:scrollToBottom={messages}>
-	{#each messages as message, i (message.id)}
+	{#each messages as message, i}
 		<div class="chat {message.senderId === meId ? 'chat-start' : 'chat-end'}">
 			{#if showAvatars !== "never"}
 				<div class="chat-image avatar">
 					<div class="w-10 rounded-box">
 						{#if showAvatars === "always" || (showAvatars === "change" && messages[i + 1]?.senderId !== message.senderId)}
 							<img
-								alt="Tailwind CSS chat bubble component"
-								src={users.find((user) => user.id === message.senderId)?.avatarUrl}
+								alt="Avatar"
+								src={users?.find((user) => user.id === message.senderId)?.avatarUrl}
 							/>
 						{/if}
 					</div>
