@@ -3,7 +3,7 @@
 	import ComponentPage from "$lib/docs/ComponentPage.svelte";
 	import ComponentPageCard from "$lib/docs/ComponentPageCard.svelte";
 	import ComponentPageFeature from "$lib/docs/ComponentPageFeature.svelte";
-	import ChatWindow from "$lib/modules/chat/ChatWindow.svelte";
+	import MessageThread from "$lib/modules/chat/MessageThread.svelte";
 
 	const users = [
 		{
@@ -110,7 +110,7 @@
 ></ComponentPage>
 
 {#snippet demoComponent()}
-	<ChatWindow meId="1" {users} {messages}></ChatWindow>
+	<MessageThread meId="1" {users} {messages}></MessageThread>
 {/snippet}
 
 {#snippet features()}
@@ -119,19 +119,19 @@
 			<div class="flex flex-col items-center grow">
 				<div class="text-lg font-mono">always</div>
 				<ComponentPageCard>
-					<ChatWindow meId="1" {users} {messages} showAvatars="always"></ChatWindow>
+					<MessageThread meId="1" {users} {messages} showAvatars="always"></MessageThread>
 				</ComponentPageCard>
 			</div>
 			<div class="flex flex-col items-center grow">
 				<div class="text-lg font-mono">change</div>
 				<ComponentPageCard>
-					<ChatWindow meId="1" {users} {messages} showAvatars="change"></ChatWindow>
+					<MessageThread meId="1" {users} {messages} showAvatars="change"></MessageThread>
 				</ComponentPageCard>
 			</div>
 			<div class="flex flex-col items-center grow">
 				<div class="text-lg font-mono">never</div>
 				<ComponentPageCard>
-					<ChatWindow meId="1" {users} {messages} showAvatars="never"></ChatWindow>
+					<MessageThread meId="1" {users} {messages} showAvatars="never"></MessageThread>
 				</ComponentPageCard>
 			</div>
 		</div>
@@ -143,7 +143,7 @@
 				<div class="camera"></div>
 				<div class="display">
 					<div class="artboard artboard-demo phone-1 p-1 pt-8">
-						<ChatWindow meId="1" {users} messages={longMessages} showAvatars="always"></ChatWindow>
+						<MessageThread meId="1" {users} messages={longMessages} showAvatars="always"></MessageThread>
 					</div>
 				</div>
 			</div>

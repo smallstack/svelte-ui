@@ -53,7 +53,11 @@
 					</div>
 				</div>
 			{/if}
-			<div class="chat-bubble {message.senderId === meId ? 'chat-start' : 'chat-end'}">
+			<div
+				class="chat-bubble {message.senderId === meId
+					? 'chat-bubble-primary chat-start'
+					: 'chat-bubble-secondary chat-end'}"
+			>
 				{message.text}
 			</div>
 			<div class="chat-footer opacity-40">

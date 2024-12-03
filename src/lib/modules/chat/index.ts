@@ -1,2 +1,2 @@
-export { default as ChatWindow } from "./ChatWindow.svelte";
+export { default as MessageThread } from "./MessageThread.svelte";
 
