@@ -14,23 +14,45 @@
 	import Date from "../utils/date/Date.svelte";
 	import type { ChatMessage, ChatUser } from "./chat-message";
 
-	let { messages, users, meId }: { messages: ChatMessage[]; users: ChatUser[]; meId: string } =
-		$props();
+	let {
+		messages = [],
+		users = [],
+		meId,
+		showAvatars = "always"
+	}: {
+		messages: ChatMessage[];
+		users: ChatUser[];
+		meId: string;
+		showAvatars?: "never" | "always" | "change";
+	} = $props();
+
+	const scrollToBottom = (node, dependency) => {
+		const scroll = () =>
+			node.scroll({
+				top: node.scrollHeight,
+				behavior: "smooth"
+			});
+		scroll();
+
+		return { update: scroll };
+	};
 </script>
 
-<div class="w-full h-full overflow-hidden overflow-y-auto">
+<div class="w-full h-full overflow-hidden overflow-y-auto" use:scrollToBottom={messages}>
 	{#each messages as message, i (message.id)}
 		<div class="chat {message.senderId === meId ? 'chat-start' : 'chat-end'}">
-			<div class="chat-image avatar">
-				<div class="w-10 rounded-box">
-					{#if messages[i + 1]?.senderId !== message.senderId}
-						<img
-							alt="Tailwind CSS chat bubble component"
-							src={users.find((user) => user.id === message.senderId)?.avatarUrl}
-						/>
-					{/if}
+			{#if showAvatars !== "never"}
+				<div class="chat-image avatar">
+					<div class="w-10 rounded-box">
+						{#if showAvatars === "always" || (showAvatars === "change" && messages[i + 1]?.senderId !== message.senderId)}
+							<img
+								alt="Tailwind CSS chat bubble component"
+								src={users.find((user) => user.id === message.senderId)?.avatarUrl}
+							/>
+						{/if}
+					</div>
 				</div>
-			</div>
+			{/if}
 			<div class="chat-bubble {message.senderId === meId ? 'chat-start' : 'chat-end'}">
 				{message.text}
 			</div>
