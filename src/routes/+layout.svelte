@@ -101,8 +101,8 @@
 				icon: "fas fa-comments",
 				entries: [
 					{
-						text: "Chat Window",
-						link: "/modules/chat/chat-window"
+						text: "Message Thread",
+						link: "/modules/chat/message-thread"
 					}
 				]
 			}
