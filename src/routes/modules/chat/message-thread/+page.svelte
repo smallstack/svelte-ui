@@ -4,6 +4,7 @@
 	import ComponentPageCard from "$lib/docs/ComponentPageCard.svelte";
 	import ComponentPageFeature from "$lib/docs/ComponentPageFeature.svelte";
 	import MessageThread from "$lib/modules/chat/MessageThread.svelte";
+	import { MessageThreadProps } from "./message-thread-props";
 
 	const users = [
 		{
@@ -73,32 +74,7 @@
 		}
 	]);
 
-	const props = [
-		{
-			name: "messages",
-			type: "Array<ChatMessage>",
-			default: "[]",
-			description: "Array of messages to display"
-		},
-		{
-			name: "users",
-			type: "Array<ChatUser>",
-			default: "[]",
-			description: "Array of users to display avatars"
-		},
-		{
-			name: "meId",
-			type: "String",
-			default: "",
-			description: "Id of the user who is currently logged in and therefor shown on the left"
-		},
-		{
-			name: "showAvatars",
-			type: '"never" | "always" | "change"',
-			default: '"always"',
-			description: "When to show avatars"
-		}
-	];
+	const props = MessageThreadProps;
 </script>
 
 <ComponentPage
@@ -143,7 +119,8 @@
 				<div class="camera"></div>
 				<div class="display">
 					<div class="artboard artboard-demo phone-1 p-1 pt-8">
-						<MessageThread meId="1" {users} messages={longMessages} showAvatars="always"></MessageThread>
+						<MessageThread meId="1" {users} messages={longMessages} showAvatars="always"
+						></MessageThread>
 					</div>
 				</div>
 			</div>

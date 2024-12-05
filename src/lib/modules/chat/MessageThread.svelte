@@ -1,12 +1,13 @@
 <svelte:options
 	customElement={{
-		tag: "sui-chat-window",
+		tag: "sui-message-thread",
 		shadow: "none",
 		props: {
 			messages: { type: "Array", reflect: true },
 			users: { type: "Array" },
 			meId: { type: "String" }
-		}
+		},
+		
 	}}
 />
 

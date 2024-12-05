@@ -103,6 +103,10 @@
 					{
 						text: "Message Thread",
 						link: "/modules/chat/message-thread"
+					},
+					{
+						text: "Chat Window",
+						link: "/modules/chat/chat-window"
 					}
 				]
 			}

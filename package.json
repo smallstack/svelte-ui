@@ -119,6 +119,7 @@
 	"type": "module",
 	"dependencies": {
 		"@floating-ui/dom": "^1.6.12",
+		"@smallstack/utils": "^3.0.10",
 		"@sveltejs/kit": "^2.8.1",
 		"date-fns": "^4.1.0",
 		"i18next": "^23.16.8",
