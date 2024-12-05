@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
 	import ComponentPageCard from "./ComponentPageCard.svelte";
+
+	import type { ComponentPropDefinition } from "./component-prop-definition";
 	import ComponentPageHeader from "./ComponentPageHeader.svelte";
 
 	let {
@@ -14,12 +16,7 @@
 		description?: string;
 		demoComponent?: Snippet;
 		features?: Snippet;
-		props?: Array<{
-			name: string;
-			type: string;
-			default: string;
-			description: string;
-		}>;
+		props?: Array<ComponentPropDefinition>;
 	} = $props();
 </script>
 

@@ -10,3 +10,11 @@ export interface ChatUser {
 	name: string;
 	avatarUrl: string;
 }
+
+export interface ChatThread {
+	id: string;
+	avatarUrl: string;
+	name: string;
+	users: ChatUser[];
+	messages: ChatMessage[];
+}

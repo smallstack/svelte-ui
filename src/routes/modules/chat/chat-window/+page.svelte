@@ -1,167 +1,164 @@
 <script lang="ts">
-	import { ONE_SECOND } from "$lib/constants/date.constants";
+	import type { ComponentPropDefinition } from "$lib/docs/component-prop-definition";
 	import ComponentPage from "$lib/docs/ComponentPage.svelte";
-	import ComponentPageCard from "$lib/docs/ComponentPageCard.svelte";
-	import ComponentPageFeature from "$lib/docs/ComponentPageFeature.svelte";
-	import MessageThread from "$lib/modules/chat/MessageThread.svelte";
+	import type { ChatThread } from "$lib/modules/chat/chat-message";
+	import ChatWindow from "$lib/modules/chat/ChatWindow.svelte";
 
-	const users = [
-		{
-			id: "1",
-			name: "Anakin Skywalker",
-			avatarUrl: "https://img.icons8.com/color/40/luke-skywalker.png"
-		},
-		{
-			id: "2",
-			name: "Obi-Wan Kenobi",
-			avatarUrl:
-				"https://img.icons8.com/external-flat-icons-inmotus-design/40/external-Obi-Wan-star-wars-flat-icons-inmotus-design.png"
-		},
-		{
-			id: "3",
-			name: "Yoda",
-			avatarUrl: "https://img.icons8.com/color/40/yoda.png"
-		}
-	];
-
-	const messages = [
-		{
-			id: "1",
-			text: "It was said that you would destroy the Sith, not join them",
-			senderId: "2",
-			createdAt: Date.now() - 1000 * 60 * 9 + ONE_SECOND * 5
-		},
-		{
-			id: "2",
-			text: "It was you who would bring balance to the Force",
-			senderId: "2",
-			createdAt: Date.now() - 1000 * 60 * 8 + ONE_SECOND * 14
-		},
-		{
-			id: "3",
-			text: "Not leave it in Darkness",
-			senderId: "2",
-			createdAt: Date.now() - 1000 * 60 * 6 + ONE_SECOND * 2
-		},
-		{
-			id: "4",
-			text: "I never said that",
-			senderId: "1",
-			createdAt: Date.now() - ONE_SECOND * 30
-		},
-		{
-			id: "5",
-			text: "I said a hip hop - Hippie to the hippie  -  The hip, hip a hop, and you don't stop, a rock it out",
-			senderId: "1",
-			createdAt: Date.now() - 1000 * 60 * 5 + ONE_SECOND * 10
-		},
-		{
-			id: "6",
-			text: "Great humor you have, young padawan",
-			senderId: "3",
-			createdAt: Date.now() - 1000 * 60 * 4 + ONE_SECOND * 20
-		}
-	];
-
-	const longMessages = $state([
-		...messages,
-		{
-			id: "6",
-			text: "Bubba to the bang bang boogie, boobie to the boogie  - To the rhythm of the boogie the beat. Now, what you hear is not a test I'm rappin' to the beat   - And me, the groove, and my friends are gonna try to move your feet  - See, I am Wonder Mike, and I'd like to say hello  - To the black, to the white, the red and the brown- The purple and yellow, but first, I gotta - Bang bang, the boogie to the boogie  -- Say up jump the boogie to the bang bang boogie -Let's rock, you don't stop   -   Rock the rhythm that'll make your body rock    - Well so far you've heard my voice but I brought two friends along  - And the next on the mic is my man Hank - C'mon, Hank, sing that song, check it out  -     Well, I'm Imp the Dimp, the ladies' pimp - The women fight for my delight   -   But I'm the grandmaster with the three MCs - That shock the house for the young ladies   -   And when you come inside, into the front - You do the Freak, Spank, and do the Bump",
-			senderId: "1",
-			createdAt: Date.now()
-		}
-	]);
-
-	const props = [
-		{
-			name: "messages",
-			type: "Array<ChatMessage>",
-			default: "[]",
-			description: "Array of messages to display"
-		},
-		{
-			name: "users",
-			type: "Array<ChatUser>",
-			default: "[]",
-			description: "Array of users to display avatars"
-		},
+	const props: ComponentPropDefinition[] = [
 		{
 			name: "meId",
-			type: "String",
-			default: "",
-			description: "Id of the user who is currently logged in and therefor shown on the left"
+			type: "string",
+			description: "The id of the user who is currently logged in",
+			default: "''"
 		},
 		{
-			name: "showAvatars",
-			type: '"never" | "always" | "change"',
-			default: '"always"',
-			description: "When to show avatars"
+			name: "threads",
+			type: "ChatThread[]",
+			description: "The list of threads to display",
+			default: "[]"
+		},
+		{
+			name: "sendMessage",
+			type: "(threadId: string, message: string) => void",
+			description: "A function that sends a message to a thread",
+			default: ""
+		},
+		{
+			name: "on:message",
+			type: "(message: MessageThreadProps) => void",
+			description: "A custom event that is fired when a message is sent",
+			default: ""
 		}
 	];
+
+	const threads: Array<ChatThread> = $state([
+		{
+			id: "1",
+			name: "Superman",
+			avatarUrl: "https://img.icons8.com/color/48/superman-dc.png",
+			users: [
+				{
+					id: "1",
+					name: "Superman",
+					avatarUrl: "https://img.icons8.com/color/48/superman-dc.png"
+				},
+				{
+					id: "2",
+					name: "Batman",
+					avatarUrl: "https://img.icons8.com/color/48/batman.png"
+				}
+			],
+			messages: [
+				{
+					id: "2",
+					senderId: "2",
+					text: "(super deep voice) I'm Batman!",
+					createdAt: Date.now()
+				},
+				{
+					id: "1",
+					senderId: "1",
+					text: "go home, you're drunk",
+					createdAt: Date.now()
+				}
+			]
+		},
+		{
+			id: "2",
+			name: "Robin",
+			avatarUrl:
+				"https://img.icons8.com/external-flat-icons-inmotus-design/67/external-face-super-hero-flat-icons-inmotus-design.png",
+			users: [
+				{
+					id: "2",
+					name: "Batman",
+					avatarUrl: "https://img.icons8.com/color/48/batman.png"
+				},
+				{
+					id: "3",
+					name: "Robin",
+					avatarUrl:
+						"https://img.icons8.com/external-flat-icons-inmotus-design/67/external-face-super-hero-flat-icons-inmotus-design.png"
+				}
+			],
+			messages: [
+				{
+					id: "1",
+					senderId: "2",
+					text: "Wanna go for a ride?",
+					createdAt: Date.now()
+				},
+				{
+					id: "1",
+					senderId: "3",
+					text: "no thanks",
+					createdAt: Date.now()
+				}
+			]
+		},
+		{
+			id: "3",
+			name: "Mom",
+			avatarUrl:
+				"https://img.icons8.com/external-wanicon-flat-wanicon/64/external-mom-mothers-day-wanicon-flat-wanicon.png",
+			users: [
+				{
+					id: "2",
+					name: "Batman",
+					avatarUrl: "https://img.icons8.com/color/48/batman.png"
+				},
+				{
+					id: "4",
+					name: "Mom",
+					avatarUrl:
+						"https://img.icons8.com/external-wanicon-flat-wanicon/64/external-mom-mothers-day-wanicon-flat-wanicon.png"
+				}
+			],
+			messages: [
+				{
+					id: "1",
+					senderId: "4",
+					text: "I'm Batman's mom",
+					createdAt: Date.now()
+				},
+				{
+					id: "1",
+					senderId: "2",
+					text: "I'm Batman",
+					createdAt: Date.now()
+				}
+			]
+		}
+	]);
+	const meId = "2";
+
+	function sendMessage(threadId: string, message: string) {
+		const threadIndex = threads.findIndex((thread) => thread.id === threadId);
+		if (threadIndex === -1) return;
+		threads[threadIndex].messages = [
+			...threads[threadIndex].messages,
+			{
+				id: threads[threadIndex].messages.length.toString(),
+				senderId: meId,
+				text: message,
+				createdAt: Date.now()
+			}
+		];
+	}
 </script>
 
 <ComponentPage
-	title="Message Thread"
-	description="Shows a thread window as known from various messengers"
+	title="Chat Window"
+	description="The Chat Window combines a message thread with an input box as well as a thread selector"
 	{demoComponent}
-	{features}
 	{props}
 ></ComponentPage>
 
 {#snippet demoComponent()}
-	<MessageThread meId="1" {users} {messages}></MessageThread>
-{/snippet}
-
-{#snippet features()}
-	<ComponentPageFeature title="Avatars">
-		<div class="flex flex-row gap-4 justify-center items-stretch">
-			<div class="flex flex-col items-center grow">
-				<div class="text-lg font-mono">always</div>
-				<ComponentPageCard>
-					<MessageThread meId="1" {users} {messages} showAvatars="always"></MessageThread>
-				</ComponentPageCard>
-			</div>
-			<div class="flex flex-col items-center grow">
-				<div class="text-lg font-mono">change</div>
-				<ComponentPageCard>
-					<MessageThread meId="1" {users} {messages} showAvatars="change"></MessageThread>
-				</ComponentPageCard>
-			</div>
-			<div class="flex flex-col items-center grow">
-				<div class="text-lg font-mono">never</div>
-				<ComponentPageCard>
-					<MessageThread meId="1" {users} {messages} showAvatars="never"></MessageThread>
-				</ComponentPageCard>
-			</div>
-		</div>
-	</ComponentPageFeature>
-
-	<ComponentPageFeature title="Auto Scroll">
-		<div class="flex flex-row gap-4 justify-center items-center">
-			<div class="mockup-phone">
-				<div class="camera"></div>
-				<div class="display">
-					<div class="artboard artboard-demo phone-1 p-1 pt-8">
-						<MessageThread meId="1" {users} messages={longMessages} showAvatars="always"></MessageThread>
-					</div>
-				</div>
-			</div>
-			<div class="grow flex flex-row justify-center">
-				<button
-					class="btn btn-primary btn-lg"
-					onclick={() => {
-						longMessages.push({
-							id: longMessages.length + 100 + "",
-							text: "Lunch anyone?",
-							senderId: "2",
-							createdAt: Date.now()
-						});
-					}}
-				>
-					Add new Message
-				</button>
-			</div>
-		</div>
-	</ComponentPageFeature>
+	<ChatWindow
+		{meId}
+		{threads}
+		{sendMessage}
+		on:message={(message) => console.log("got message via custom event: ", message)}
+	/>
 {/snippet}
