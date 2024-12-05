@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
 	import ComponentPageCard from "./ComponentPageCard.svelte";
+
 	import type { ComponentPropDefinition } from "./component-prop-definition";
+	import ComponentPageHeader from "./ComponentPageHeader.svelte";
 
 	let {
 		title,
@@ -19,17 +21,14 @@
 </script>
 
 <div class="flex flex-col gap-4">
-	<div class="text-4xl tracking-wider">{title}</div>
-	{#if description}
-		<div>{description}</div>
-	{/if}
+	<ComponentPageHeader {title} {description} />
 	{#if demoComponent}
 		<ComponentPageCard>
 			{@render demoComponent()}
 		</ComponentPageCard>
 	{/if}
 	{#if props}
-		<div class="text-2xl tracking-wider mt-12">Props</div>
+		<ComponentPageHeader title="Props" level="2" />
 		<ComponentPageCard>
 			<table class="table table-zebra">
 				<thead>
@@ -54,7 +53,7 @@
 		</ComponentPageCard>
 	{/if}
 	{#if features}
-		<div class="text-2xl tracking-wider mt-12">Features</div>
+		<ComponentPageHeader title="Features" level="2" />
 		{@render features()}
 	{/if}
 </div>

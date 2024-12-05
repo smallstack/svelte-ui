@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
+	import ComponentPageHeader from "$lib/docs/ComponentPageHeader.svelte";
 	import ComponentPlayground from "$lib/docs/ComponentPlayground.svelte";
 	import { DateTimeRangeInput } from "$lib/modules/forms";
 
@@ -9,7 +9,7 @@
 	let toDefault = 1719220800000;
 </script>
 
-<ComponentHeader
+<ComponentPageHeader
 	title="Date Time Range Input"
 	description="An input component where date ranges can be defined. In addition, to make life easier for customers, 9 presets are shown when clicking on the calendar icon."
 />

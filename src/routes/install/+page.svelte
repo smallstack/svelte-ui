@@ -1,19 +1,17 @@
 <script lang="ts">
-	import ComponentCode from "$lib/docs/ComponentCode.svelte";
-	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
-	import ComponentSubHeader from "$lib/docs/ComponentSubHeader.svelte";
+	import ComponentPageHeader from "$lib/docs/ComponentPageHeader.svelte";
 
 	let selectedTab = "Vanilla";
 </script>
 
-<ComponentHeader
+<ComponentPageHeader
 	title="Getting Started"
 	description="There are multiple ways to install Svelte UI. You can either use a package manager or include the components as web components.
 "
 />
 
 <div class="flex flex-col gap-4">
-	<ComponentSubHeader title="Via Package Manager"></ComponentSubHeader>
+	<ComponentPageHeader title="Via Package Manager" level="2"></ComponentPageHeader>
 	<div role="tablist" class="tabs tabs-lifted mb-4">
 		<input type="radio" name="install-npm-tabs" role="tab" class="tab" aria-label="NPM" checked />
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
@@ -31,10 +29,11 @@
 		</div>
 	</div>
 
-	<ComponentSubHeader
+	<ComponentPageHeader
 		title="As Web Components"
 		description="It heavily depends on the target framework how to use web components. Here are some exemplarily implementations."
-	></ComponentSubHeader>
+		level="2"
+	></ComponentPageHeader>
 	<div role="tablist" class="tabs tabs-lifted mb-4">
 		<input
 			type="radio"
@@ -99,7 +98,7 @@
 		</div>
 	</div>
 
-	<ComponentSubHeader title="Tailwind Setup"></ComponentSubHeader>
+	<ComponentPageHeader title="Tailwind Setup" level="2"></ComponentPageHeader>
 
 	To use the components with Tailwind CSS, you obviously need to have Tailwind CSS installed. Since
 	svelte (and sveltekit) strip out unused CSS, you need to add the following to your
