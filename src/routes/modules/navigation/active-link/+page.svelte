@@ -1,12 +1,12 @@
 <script lang="ts">
 	import ComponentCode from "$lib/docs/ComponentCode.svelte";
-	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
+	import ComponentPageHeader from "$lib/docs/ComponentPageHeader.svelte";
 </script>
 
-<ComponentHeader
+<ComponentPageHeader
 	title="Active Link"
 	description="Sets a given css class when the current <a> element's href matches the current route. It is being used by all navigation bar components of Svelte UI."
-></ComponentHeader>
+></ComponentPageHeader>
 
 <ComponentCode>
 	{`<a href="/users" use:isActiveLink({ activeClass: "active-class" })></a>`}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ComponentPlayground from "$lib/docs/ComponentPlayground.svelte";
-	import ComponentSubHeader from "$lib/docs/ComponentSubHeader.svelte";
+	import ComponentSubHeader from "$lib/docs/ComponentPageHeader.svelte";
 	import type { AppShellTabBarOptions } from "$lib/index.js";
 	import TabBar from "$lib/modules/navigation/TabBar.svelte";
 
