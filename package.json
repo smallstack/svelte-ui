@@ -10,7 +10,7 @@
 		"url": "https://github.com/smallstack/svelte-ui/issues"
 	},
 	"engines": {
-		"node": "20"
+		"node": ">=18"
 	},
 	"homepage": "https://svelte-ui.com",
 	"keywords": [
