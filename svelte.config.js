@@ -8,7 +8,10 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			runtime: "nodejs20.x"
+		}),
+
 	},
 	compilerOptions: {
 		customElement: true
