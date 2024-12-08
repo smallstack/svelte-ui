@@ -86,16 +86,16 @@
 		"!dist/**/*.spec.*"
 	],
 	"devDependencies": {
-		"@codecov/sveltekit-plugin": "^1.4.0",
+		"@codecov/sveltekit-plugin": "^1.5.1",
 		"@playwright/test": "^1.49.0",
-		"@sveltejs/adapter-vercel": "^5.4.7",
+		"@sveltejs/adapter-vercel": "^5.5.0",
 		"@sveltejs/package": "^2.3.7",
-		"@sveltejs/vite-plugin-svelte": "^4.0.1",
+		"@sveltejs/vite-plugin-svelte": "^5.0.1",
 		"@testing-library/svelte": "^5.2.6",
 		"@types/eslint": "^9.6.0",
 		"@types/node": "^22.9.1",
-		"@vitest/browser": "^2.1.5",
-		"@vitest/coverage-v8": "^2.1.5",
+		"@vitest/browser": "^2.1.8",
+		"@vitest/coverage-v8": "^2.1.8",
 		"autoprefixer": "^10.4.19",
 		"daisyui": "^4.12.14",
 		"eslint": "^9.0.0",
@@ -112,20 +112,20 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0-alpha.20",
-		"vite": "^5.4.11",
-		"vitest": "^2.1.5"
+		"vite": "^6.0.3",
+		"vitest": "^2.1.8"
 	},
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
 		"@floating-ui/dom": "^1.6.12",
 		"@smallstack/utils": "^3.0.10",
-		"@sveltejs/kit": "^2.8.1",
+		"@sveltejs/kit": "^2.9.0",
 		"date-fns": "^4.1.0",
 		"i18next": "^23.16.8",
 		"i18next-browser-languagedetector": "^8.0.0",
 		"pulltorefreshjs": "^0.1.22",
-		"svelte": "^5.2.7",
+		"svelte": "^5.9.0",
 		"svelte-i18next": "^2.2.2"
 	},
 	"volta": {
@@ -133,7 +133,7 @@
 	},
 	"overrides": {
 		"@codecov/sveltekit-plugin": {
-			"svelte": "^5.0.0"
+			"svelte": "^6"
 		}
 	}
 }
