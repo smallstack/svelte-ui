@@ -55,6 +55,16 @@
 				]
 			},
 			{
+				text: "Modals Module",
+				icon: "fas fa-window-restore",
+				entries: [
+					{
+						text: "Modal Service",
+						link: "/modules/modals/modal-service"
+					}
+				]
+			},
+			{
 				text: "Navigation Module",
 				icon: "fas fa-compass",
 				entries: [
@@ -83,6 +93,20 @@
 					{
 						text: "In Viewport",
 						link: "/actions/viewport"
+					}
+				]
+			},
+			{
+				text: "Chat Module",
+				icon: "fas fa-comments",
+				entries: [
+					{
+						text: "Message Thread",
+						link: "/modules/chat/message-thread"
+					},
+					{
+						text: "Chat Window",
+						link: "/modules/chat/chat-window"
 					}
 				]
 			}

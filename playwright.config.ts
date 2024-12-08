@@ -17,13 +17,13 @@ const localConfig: PlaywrightTestConfig = {
 	name: "SvelteUI Local",
 	webServer: {
 		command: "npm run dev",
-		port: 5173,
+		port: 5174,
 		reuseExistingServer: true
 	},
 	testDir: "src",
 	testMatch: /(.+\.)?playwright\.ts/,
 	use: {
-		baseURL: "http://localhost:5173"
+		baseURL: "http://localhost:5174"
 	}
 };
 

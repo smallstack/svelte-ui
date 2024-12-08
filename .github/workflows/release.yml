@@ -3,7 +3,7 @@ name: Github & NPM Release
 on:
   push:
     tags:
-      - "**"
+      - "*"
 
 jobs:
   publish-npm:
