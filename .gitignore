@@ -7,6 +7,8 @@ node_modules
 /build
 /dist
 /dist-js
+/test-results
+/coverage
 
 # OS
 .DS_Store

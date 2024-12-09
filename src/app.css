@@ -6,6 +6,7 @@ body {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
+	@apply bg-slate-100;
 }
 
 html {

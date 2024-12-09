@@ -1,11 +1,11 @@
 <script lang="ts">
 	import ComponentCode from "$lib/docs/ComponentCode.svelte";
-	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
+	import ComponentPageHeader from "$lib/docs/ComponentPageHeader.svelte";
 	import ComponentPlayground from "$lib/docs/ComponentPlayground.svelte";
-	import Overlay from "$lib/overlay/Overlay.svelte";
+	import Overlay from "$lib/modules/layout/overlay/Overlay.svelte";
 </script>
 
-<ComponentHeader
+<ComponentPageHeader
 	title="Overlay"
 	description="Overlay is a component that can be used to show a floating element on top of another element. It is useful for creating dropdowns, modals, popovers, etc."
 />

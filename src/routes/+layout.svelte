@@ -1,59 +1,144 @@
 <script lang="ts">
+	import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.js";
+	import AppShell from "$lib/modules/navigation/AppShell.svelte";
+	import { BREAKPOINTS, MD_AND_UP } from "$lib/modules/navigation/breakpoint.service.svelte.js";
+	import type { Navigation } from "$lib/modules/navigation/navigation.js";
+	import { initI18n } from "$lib/stores/i18n.store.js";
 	import "tailwindcss/tailwind.css";
 	import "../app.css";
+
+	initI18n({
+		resources: {
+			de: {
+				translation: {
+					navigation: {
+						about: "Über"
+					}
+				}
+			},
+			en: {
+				translation: {
+					navigation: {
+						about: "About",
+						gettingStarted: "Getting Started"
+					}
+				}
+			}
+		}
+	});
+
+	let navigation: Navigation = {
+		entries: [
+			{
+				text: "Getting Started",
+				icon: "fas fa-home",
+				link: "/",
+				entries: [
+					{
+						text: { de: "Über", en: "About" },
+						link: "/"
+					},
+					{
+						text: "navigation.gettingStarted",
+						link: "/install"
+					}
+				]
+			},
+			{
+				text: "Forms Module",
+				icon: "fas fa-list",
+				entries: [
+					{
+						text: "Date Time Range Input",
+						link: "/forms/date-time-range-input"
+					}
+				]
+			},
+			{
+				text: "Modals Module",
+				icon: "fas fa-window-restore",
+				entries: [
+					{
+						text: "Modal Service",
+						link: "/modules/modals/modal-service"
+					}
+				]
+			},
+			{
+				text: "Navigation Module",
+				icon: "fas fa-compass",
+				entries: [
+					{
+						text: "App Shell",
+						link: "/modules/navigation/app-shell"
+					},
+					{
+						text: "Active Link Action",
+						link: "/modules/navigation/active-link"
+					},
+					{
+						text: "Tab Navigation",
+						link: "/modules/navigation/tabbar"
+					}
+				]
+			},
+			{
+				text: "Actions Module",
+				icon: "fas fa-bolt",
+				entries: [
+					{
+						text: "Overlay",
+						link: "/actions/overlay"
+					},
+					{
+						text: "In Viewport",
+						link: "/actions/viewport"
+					}
+				]
+			},
+			{
+				text: "Chat Module",
+				icon: "fas fa-comments",
+				entries: [
+					{
+						text: "Message Thread",
+						link: "/modules/chat/message-thread"
+					},
+					{
+						text: "Chat Window",
+						link: "/modules/chat/chat-window"
+					}
+				]
+			}
+		]
+	};
+
+	let options: AppShellOptions = {
+		logoUrl: "/svelte-ui-logo.svg",
+		title: "Svelte UI",
+		sidebar: {
+			show: MD_AND_UP,
+			width: 256,
+			logoUrl: null,
+			title: null
+		},
+		navbar: {
+			show: MD_AND_UP,
+			showNavigation: false
+		},
+		appHeader: {
+			show: [BREAKPOINTS.XS, BREAKPOINTS.SM],
+			showMenuTriggerRight: true,
+			useSafeArea: true
+		},
+		navigation
+	};
 </script>
 
-<div class="flex flex-row">
-	<div class="bg-gray-200 w-80 rounded-2xl p-5 flex flex-col gap-8 m-4">
-		<div class="w-full flex flex-col justify-center items-center text-sm tracking-wider mb-8">
-			<a class="" href="/">
-				<img src="/svelte-ui-logo.svg" alt="Svelte UI Logo" width="160px" />
-			</a>
-			<img
-				src="https://img.shields.io/github/package-json/v/smallstack/svelte-ui
-"
-				alt="Version"
-			/>
-		</div>
-
-		<div class="flex flex-col gap-1">
-			<div class="text-lg font-semibold tracking-wider">Getting Started</div>
-			<div class="pl-3">
-				<a href="/install">Install</a>
-			</div>
-		</div>
-
-		<div class="flex flex-col gap-1">
-			<div class="text-lg font-semibold tracking-wider">FORMS</div>
-			<div class="pl-3">
-				<a href="/forms/form-container">Form</a>
-			</div>
-			<div class="pl-3">
-				<a href="/forms/form-container">Form Service</a>
-			</div>
-		</div>
-		<div class="flex flex-col gap-1">
-			<div class="text-lg font-semibold tracking-wider">FORM INPUTS</div>
-			<!-- <div class="pl-3">
-				<a href="/forms/input">Input</a>
-			</div> -->
-			<div class="pl-3">
-				<a href="/forms/date-time-range-input">Date Time Range Input</a>
-			</div>
-		</div>
-
-		<div class="flex flex-col gap-1">
-			<div class="text-lg font-semibold tracking-wider">ACTIONS</div>
-			<div class="pl-3">
-				<a href="/actions/overlay">Overlay</a>
-			</div>
-			<div class="pl-3">
-				<a href="/actions/viewport">In Viewport</a>
-			</div>
-		</div>
-	</div>
-	<div class="w-full rounded-2xl p-5 text-base text-black m-4 bg-gray-100">
-		<div class="hidden md:flex flex-row flex-wrap justify-end items-center mb-8 gap-4">
+<AppShell {options}>
+	<div class="w-full p-5 text-base text-black">
+		<div class="hidden md:flex flex-row flex-wrap justify-end items-center mb-8 gap-2">
+			<img src="https://img.shields.io/github/package-json/v/smallstack/svelte-ui" alt="Version" />
 			<a href="https://www.npmjs.com/package/@smallstack/svelte-ui" target="_blank">
 				<img
 					src="https://img.shields.io/npm/dw/%40smallstack%2Fsvelte-ui?logo=npm&label=esm"
@@ -78,8 +163,7 @@
 			<!-- activity -->
 			<a href="https://github.com/smallstack/svelte-ui" target="_blank">
 				<img
-					src="https://img.shields.io/github/commit-activity/w/smallstack/svelte-ui/main?style=flat
-"
+					src="https://img.shields.io/github/commit-activity/w/smallstack/svelte-ui/main?style=flat"
 					alt="Community activity"
 					class="h-5"
 				/>
@@ -96,4 +180,4 @@
 		<div class="alert alert-warning mb-8">This library is based on Svelte 5 beta versions. Even though these versions are already "release candidates", things might not work well enough for your production usage. Use at own risk.</div>
 		<slot></slot>
 	</div>
-</div>
+</AppShell>

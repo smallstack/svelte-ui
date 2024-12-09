@@ -1,20 +1,19 @@
 <script>
 	import ComponentCode from "$lib/docs/ComponentCode.svelte";
-	import ComponentHeader from "$lib/docs/ComponentHeader.svelte";
-	import ComponentSubHeader from "$lib/docs/ComponentSubHeader.svelte";
-	import InViewport from "$lib/in-viewport/InViewport.svelte";
+	import ComponentPageHeader from "$lib/docs/ComponentPageHeader.svelte";
+	import { InViewport } from "$lib/modules/layout";
 
 	function inViewportEvent(event) {
 		console.log("InViewport Event: ", event.detail);
 	}
 </script>
 
-<ComponentHeader
+<ComponentPageHeader
 	title="In Viewport"
 	description="The component itself is invisible. But whenever the component scrolls into viewport, it dispatches an event. This can be used to trigger animations or other actions like an infinite scroll concept."
-></ComponentHeader>
+></ComponentPageHeader>
 
-<ComponentSubHeader title="Usage"></ComponentSubHeader>
+<ComponentPageHeader title="Usage" level="2"></ComponentPageHeader>
 <ComponentCode
 	>{`<InViewport on:event={(event) => {
         if (event === true) {
@@ -26,7 +25,7 @@
 </InViewport>`}
 </ComponentCode>
 
-<ComponentSubHeader title="Demo"></ComponentSubHeader>
+<ComponentPageHeader title="Demo" level="2"></ComponentPageHeader>
 The component is attached at the bottom of the page. Please open the javascript console and scroll down
 to see the log messages.
 
