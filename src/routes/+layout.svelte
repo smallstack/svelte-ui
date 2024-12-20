@@ -55,6 +55,16 @@
 				]
 			},
 			{
+				text: "Data Module",
+				icon: "fas fa-database",
+				entries: [
+					{
+						text: "Data View",
+						link: "/modules/data/table"
+					}
+				]
+			},
+			{
 				text: "Modals Module",
 				icon: "fas fa-window-restore",
 				entries: [
