@@ -87,10 +87,12 @@
 	],
 	"devDependencies": {
 		"@codecov/sveltekit-plugin": "^1.7.0",
+		"@fetch-mock/vitest": "^0.2.6",
 		"@playwright/test": "^1.49.1",
 		"@sveltejs/adapter-vercel": "^5.5.2",
 		"@sveltejs/package": "^2.3.7",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/svelte": "^5.2.6",
 		"@types/eslint": "^9.6.0",
 		"@types/node": "^22.9.1",
@@ -124,6 +126,7 @@
 		"date-fns": "^4.1.0",
 		"i18next": "^24.2.0",
 		"i18next-browser-languagedetector": "^8.0.0",
+		"jsdom": "^25.0.1",
 		"pulltorefreshjs": "^0.1.22",
 		"svelte": "^5.16.2",
 		"svelte-i18next": "^2.2.2"

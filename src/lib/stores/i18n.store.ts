@@ -5,7 +5,7 @@ import { getContext, setContext } from "svelte";
 import type { Readable } from "svelte/store";
 import { derived, get, writable } from "svelte/store";
 
-const createI18nStore = (i18nNextOptions?: Partial<InitOptions>) => {
+export const createI18nStore = (i18nNextOptions?: Partial<InitOptions>) => {
 	i18nNext.use(LanguageDetector).init({
 		fallbackLng: "en",
 		detection: {
@@ -64,7 +64,7 @@ i18nNext.on("languageChanged", (lng) => {
 	const formattedLanguage = lng.split("-")[0];
 	currentLanguage.set(formattedLanguage);
 });
-export const availableLanguages = writable(["de"]);
+export const availableLanguages = writable(["de", "en"]);
 export const translationsUpdated = writable(undefined);
 
 export function translateInlineTranslation(

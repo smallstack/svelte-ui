@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { availableLanguages, currentLanguage, getI18n, t } from "$lib/stores/i18n.store";
-
+ 
 	const i18n = getI18n();
 
 	function changeLanguage(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {

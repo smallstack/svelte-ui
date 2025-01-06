@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { breakpointService } from "./breakpoint.service.svelte.js";
+import { breakpointService } from "./breakpoint.service.svelte";
 
 describe("BreakpointService", () => {
 	it("should match breakpoints", () => {
