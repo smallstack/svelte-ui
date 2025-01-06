@@ -37,8 +37,9 @@ class BreakpointService {
 		}
 	}
 
-	public matches(breakpoints: boolean | string | string[]) {
-		if (typeof breakpoints === "boolean" || breakpoints === undefined) return breakpoints;
+	public matches(breakpoints: boolean | string | string[]): boolean {
+		if (typeof breakpoints === "boolean" || breakpoints === undefined)
+			return breakpoints as boolean;
 		if (typeof breakpoints === "string") breakpoints = [breakpoints];
 		for (const breakpoint of breakpoints) {
 			const dimensions = BREAKPOINT_DIMENSIONS[breakpoint];

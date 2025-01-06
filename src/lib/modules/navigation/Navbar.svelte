@@ -5,7 +5,7 @@
 </script>
 
 <div
-	class="w-full flex flex-row gap-2 justify-between items-center"
+	class="w-full flex flex-row gap-2 justify-between items-center px-5"
 	style="background-color: {options?.bgColor}; color: {options?.textColor}; height:{options.height ||
 		64}px; --navbarBgColor: {options?.bgColor}; --navbarTextColor: {options?.textColor}"
 >
@@ -20,7 +20,7 @@
 		</div>
 	</a>
 	<div class="flex flex-row gap-8 items-center">
-		{#if options?.showNavigation}
+		{#if options?.showNavigation !== false}
 			{#each options?.navigation.entries as entry}
 				<a class="border-b-2 menu-entry" href={entry.link}>
 					{$t(entry.text)}
