@@ -1,6 +1,6 @@
 {
 	"name": "@smallstack/svelte-ui",
-	"version": "0.2.50",
+	"version": "0.3.0",
 	"description": "Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and as web components.",
 	"author": {
 		"name": "smallstack GmbH",
@@ -86,54 +86,52 @@
 		"!dist/**/*.spec.*"
 	],
 	"devDependencies": {
-		"@codecov/sveltekit-plugin": "^1.5.1",
-		"@playwright/test": "^1.49.0",
-		"@sveltejs/adapter-vercel": "^5.5.0",
+		"@codecov/sveltekit-plugin": "^1.7.0",
+		"@fetch-mock/vitest": "^0.2.6",
+		"@playwright/test": "^1.49.1",
+		"@sveltejs/adapter-vercel": "^5.5.2",
 		"@sveltejs/package": "^2.3.7",
-		"@sveltejs/vite-plugin-svelte": "^5.0.1",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/svelte": "^5.2.6",
 		"@types/eslint": "^9.6.0",
 		"@types/node": "^22.9.1",
-		"@vitest/browser": "^2.1.8",
-		"@vitest/coverage-v8": "^2.1.8",
+		"@vitest/browser": "3.0.0-beta.3",
+		"@vitest/coverage-v8": "3.0.0-beta.3",
 		"autoprefixer": "^10.4.19",
-		"daisyui": "^4.12.14",
-		"eslint": "^9.0.0",
+		"daisyui": "^4.12.23",
+		"eslint": "^9.17.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.36.0",
-		"globals": "^15.0.0",
-		"playwright": "^1.49.0",
+		"eslint-plugin-svelte": "^2.46.1",
+		"globals": "^15.14.0",
+		"playwright": "^1.49.1",
 		"postcss": "^8.4.38",
 		"prettier": "^3.1.1",
-		"prettier-plugin-svelte": "^3.1.2",
-		"publint": "^0.2.8",
-		"svelte-check": "^4.0.9",
+		"prettier-plugin-svelte": "^3.3.2",
+		"publint": "^0.3.0",
+		"svelte-check": "^4.1.1",
 		"tailwindcss": "^3.4.15",
 		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
-		"typescript-eslint": "^8.0.0-alpha.20",
-		"vite": "^6.0.3",
-		"vitest": "^2.1.8"
+		"typescript": "^5.7.2",
+		"typescript-eslint": "^8.19.1",
+		"vite": "^6.0.7",
+		"vitest": "3.0.0-beta.3"
 	},
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
 		"@floating-ui/dom": "^1.6.12",
 		"@smallstack/utils": "^3.0.10",
-		"@sveltejs/kit": "^2.9.0",
+		"@sveltejs/kit": "^2.15.1",
 		"date-fns": "^4.1.0",
-		"i18next": "^23.16.8",
+		"i18next": "^24.2.0",
 		"i18next-browser-languagedetector": "^8.0.0",
+		"jsdom": "^25.0.1",
 		"pulltorefreshjs": "^0.1.22",
-		"svelte": "^5.9.0",
+		"svelte": "^5.16.2",
 		"svelte-i18next": "^2.2.2"
 	},
 	"volta": {
 		"node": "20.16.0"
-	},
-	"overrides": {
-		"@codecov/sveltekit-plugin": {
-			"svelte": "^6"
-		}
 	}
 }
