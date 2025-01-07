@@ -5,7 +5,7 @@ import { getContext, setContext } from "svelte";
 import type { Readable } from "svelte/store";
 import { derived, get, writable } from "svelte/store";
 
-export const getI18nStore = (i18nNextOptions?: Partial<InitOptions>) => {
+export const createI18nStore = (i18nNextOptions?: Partial<InitOptions>) => {
 	i18nNext.use(LanguageDetector).init({
 		fallbackLng: "en",
 		detection: {
@@ -15,13 +15,37 @@ export const getI18nStore = (i18nNextOptions?: Partial<InitOptions>) => {
 		interpolation: {
 			escapeValue: false // not needed for svelte as it escapes by default
 		},
+		defaultNS: "translation",
 		...i18nNextOptions
 	});
 	return derived([currentLanguage], () => i18nNext);
 };
 
 export function initI18n(i18nNextOptions?: Partial<InitOptions>) {
-	setContext("i18n", getI18nStore(i18nNextOptions));
+	setContext("i18n", createI18nStore(i18nNextOptions));
+}
+
+export function addTranslations(locale: string, translations: Record<string, unknown>) {
+	i18nNext.addResourceBundle(locale, "translation", translations, true, true);
+	translationsUpdated.set(true);
+}
+
+export async function addTranslationsFromUrl(url: string) {
+	// load translations async
+	await fetch(url).then(async (response) => {
+		const translations = await response.json();
+		for (const translation of translations.elements) {
+			const keyValueMap = translation.translations.reduce(
+				(acc, curr) => {
+					acc[curr.key] = curr.value;
+					return acc;
+				},
+				{} as Record<string, string>
+			);
+			i18nNext.addResourceBundle(translation.language, "translation", keyValueMap, true, true);
+		}
+		translationsUpdated.set(true);
+	});
 }
 
 export function getI18n(): Readable<typeof i18nNext> {
@@ -37,8 +61,11 @@ export type InlineTranslation = {
 
 export const currentLanguage = writable("de");
 i18nNext.on("languageChanged", (lng) => {
-	currentLanguage.set(lng);
+	const formattedLanguage = lng.split("-")[0];
+	currentLanguage.set(formattedLanguage);
 });
+export const availableLanguages = writable(["de", "en"]);
+export const translationsUpdated = writable(undefined);
 
 export function translateInlineTranslation(
 	translation: InlineTranslation | string,
@@ -63,3 +90,10 @@ export const t = derived(currentLanguage, (currentLanguage: string) => {
 		return translateInlineTranslation(key, { language: currentLanguage });
 	};
 });
+
+export function isInlineTranslation(obj: InlineTranslation): obj is InlineTranslation {
+	if (!(obj instanceof Object)) return false;
+	for (const [key, value] of Object.entries(obj))
+		if (typeof key !== "string" || typeof value !== "string") return false;
+	return true;
+}

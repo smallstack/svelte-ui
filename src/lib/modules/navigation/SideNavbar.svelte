@@ -39,14 +39,18 @@
 				<span>{$t(entry.text)}</span>
 			</div>
 		</a>
+		{#if Array.isArray(entry.entries)}
+			<div class="flex flex-col gap-1 w-full">
+				{#each entry.entries as subEntry}
+					{@render menuEntry(subEntry, "pl-8 text-md")}
+				{/each}
+			</div>
+		{/if}
 	{/snippet}
 
 	{#each options?.navigation?.entries as entry}
 		<div class="flex flex-col gap-1 w-full">
 			{@render menuEntry(entry, "p-2 text-lg")}
-			{#each entry.entries as subEntry}
-				{@render menuEntry(subEntry, "pl-8 text-md")}
-			{/each}
 		</div>
 	{/each}
 </div>
