@@ -2,6 +2,7 @@
 	import { onMount, type Component } from "svelte";
 	import { fly } from "svelte/transition";
 	import { modalService, type ModalOptions } from "./modal.service.svelte";
+	import { asyncHandler } from "../utils";
 
 	interface ModalStackItem {
 		component: Component;
@@ -73,7 +74,7 @@
 					</div>
 				{/if}
 				<div class="flex-grow">
-					{#if currentModal?.options.title}
+					{#if currentModal?.options?.title}
 						<div>{currentModal.options.title}</div>
 					{/if}
 				</div>
@@ -88,6 +89,18 @@
 						transition:fly={{ x: modalStackLength > 1 ? "100%" : "0" }}
 					>
 						<svelte:component this={modal.component} {...modal.options?.data} />
+						{#if modal.options?.buttons}
+							<div class="dialog-actions">
+								{#each modal.options.buttons as button}
+									<button
+										class="btn btn-{button.color}"
+										use:asyncHandler={() =>
+											button.onClick({ closeModal: () => modalService.closeModal() })}
+										>{button.text}</button
+									>
+								{/each}
+							</div>
+						{/if}
 					</div>
 				{/each}
 			</div>

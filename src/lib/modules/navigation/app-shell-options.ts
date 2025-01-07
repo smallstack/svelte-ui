@@ -100,12 +100,11 @@ export function filterAuthorizedNavigation(
 
 export function getComputedOptions<T>(options: AppShellOptions, navigationProp: string): T {
 	if (!(navigationProp in options)) throw new Error("property " + navigationProp + " not found");
-	const clonedOptions = JSON.parse(JSON.stringify(options));
-	const base = clonedOptions[navigationProp];
+	const base = options[navigationProp];
 
 	function useGlobalValue(propName: string): void {
 		if (base[propName] === undefined && base[propName] !== null)
-			base[propName] = clonedOptions[propName];
+			base[propName] = options[propName];
 	}
 	useGlobalValue("logoUrl");
 	useGlobalValue("title");
@@ -117,7 +116,7 @@ export function getComputedOptions<T>(options: AppShellOptions, navigationProp: 
 	if (base.navigation) {
 		base.navigation = filterAuthorizedNavigation(
 			base.navigation,
-			clonedOptions.availablePermissions
+			options.availablePermissions
 		);
 	}
 
