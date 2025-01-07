@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { type AppShellNavbarOptions } from "./app-shell-options.js";
 	import { t } from "$lib/stores/i18n.store.js";
+	import { type AppShellNavbarOptions } from "./app-shell-options.js";
 	let { options }: { options?: AppShellNavbarOptions } = $props();
 </script>
 
@@ -22,9 +22,19 @@
 	<div class="flex flex-row gap-8 items-center">
 		{#if options?.showNavigation !== false}
 			{#each options?.navigation.entries as entry}
-				<a class="border-b-2 menu-entry" href={entry.link}>
-					{$t(entry.text)}
-				</a>
+				{#if entry.link}
+					<a class="border-b-2 menu-entry" href={entry.link}>
+						{$t(entry.text)}
+					</a>
+				{:else if entry.clickFn}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div class="border-b-2 menu-entry" onclick={() => entry.clickFn()}>
+						{$t(entry.text)}
+					</div>
+				{:else}
+					<div>{$t(entry.text)}</div>
+				{/if}
 			{/each}
 		{/if}
 	</div>
