@@ -38,6 +38,7 @@ export interface ModalOptions<RETURN_TYPE = any> {
 	closeDialog?: (data?: RETURN_TYPE) => void | Promise<void>;
 	/** if set, the given prop will automatically passed to the component as the closing function */
 	closingPropName?: string;
+	buttons?: ModalButton[];
 }
 
 export interface ModalComponent {
