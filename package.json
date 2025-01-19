@@ -126,7 +126,7 @@
 		"date-fns": "^4.1.0",
 		"i18next": "^24.2.0",
 		"i18next-browser-languagedetector": "^8.0.0",
-		"jsdom": "^25.0.1",
+		"jsdom": "^26.0.0",
 		"pulltorefreshjs": "^0.1.22",
 		"svelte": "^5.16.2",
 		"svelte-i18next": "^2.2.2"
