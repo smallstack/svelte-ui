@@ -8,7 +8,7 @@
 		label: string;
 		placeholder: string;
 		value: string;
-		error: string;
+		error?: string;
 	} = $props();
 </script>
 

@@ -127,6 +127,7 @@
 		"i18next": "^24.2.0",
 		"i18next-browser-languagedetector": "^8.0.0",
 		"jsdom": "^26.0.0",
+		"perfect-freehand": "^1.2.2",
 		"pulltorefreshjs": "^0.1.22",
 		"svelte": "^5.16.2",
 		"svelte-i18next": "^2.2.2"
