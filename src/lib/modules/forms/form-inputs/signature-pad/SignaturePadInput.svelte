@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getI18n, t } from "$lib/stores/i18n.store";
+	import { t } from "$lib/stores/i18n.store";
 	import { onMount } from "svelte";
 	import { SignaturePadAction } from "./signature-pad-action";
 
