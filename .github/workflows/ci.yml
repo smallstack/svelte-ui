@@ -3,6 +3,7 @@ name: Test
 on:
   push:
   pull_request:
+  merge_group:
 
 env: 
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}    
