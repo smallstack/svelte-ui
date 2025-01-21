@@ -13,6 +13,9 @@
 				translation: {
 					navigation: {
 						about: "Über"
+					},
+					actions: {
+						clear: "Leeren"
 					}
 				}
 			},
@@ -21,6 +24,9 @@
 					navigation: {
 						about: "About",
 						gettingStarted: "Getting Started"
+					},
+					actions: {
+						clear: "Clear"
 					}
 				}
 			}
@@ -48,9 +54,17 @@
 				text: "Forms Module",
 				icon: "fas fa-list",
 				entries: [
+					// {
+					// 	text: "String Input",
+					// 	link: "/forms/input"
+					// },
 					{
 						text: "Date Time Range Input",
 						link: "/forms/date-time-range-input"
+					},
+					{
+						text: "Signature Pad Input",
+						link: "/forms/signature-pad-input"
 					}
 				]
 			},
