@@ -4,8 +4,8 @@
 
 	const options: AppShellTabBarOptions = {
 		show: true,
-		bgColor: "oklch(var(--p))",
-		textColor: "oklch(var(--pc))",
+		bgColor: "var(--color-primary)",
+		textColor: "var(--color-primary-color)",
 		navigation: {
 			entries: [
 				{ icon: "fas fa-home", text: "Home", link: "/" },

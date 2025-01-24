@@ -4,7 +4,6 @@
 	import { BREAKPOINTS, MD_AND_UP } from "$lib/modules/navigation/breakpoint.service.svelte.js";
 	import type { Navigation } from "$lib/modules/navigation/navigation.js";
 	import { initI18n } from "$lib/stores/i18n.store.js";
-	import "tailwindcss/tailwind.css";
 	import "../app.css";
 
 	initI18n({

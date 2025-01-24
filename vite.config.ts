@@ -1,9 +1,11 @@
 import { codecovSvelteKitPlugin } from "@codecov/sveltekit-plugin";
 import { sveltekit } from "@sveltejs/kit/vite";
+import tailwindcss from '@tailwindcss/vite';
 import { svelteTesting } from "@testing-library/svelte/vite";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
+
 
 const file = fileURLToPath(new URL("package.json", import.meta.url));
 const json = readFileSync(file, "utf8");
@@ -11,6 +13,7 @@ const pkg = JSON.parse(json);
 
 export default defineConfig({
 	plugins: [
+		tailwindcss(),
 		sveltekit(),
 		svelteTesting(),
 		codecovSvelteKitPlugin({

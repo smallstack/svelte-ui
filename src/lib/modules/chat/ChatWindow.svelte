@@ -56,7 +56,7 @@
 			<div class="grow flex flex-col gap-2 items-start">
 				{#each threads as thread}
 					<button
-						class="flex flex-row gap-2"
+						class="flex flex-row gap-2 cursor-pointer"
 						onclick={() => {
 							currentThreadId = thread.id;
 							sidePanelOpen = false;
@@ -65,7 +65,7 @@
 						<img
 							src={thread.avatarUrl}
 							alt={thread.name}
-							class="avatar rounded-full w-10 h-10 {thread.id === currentThreadId
+							class="avatar rounded-full w-10 h-10 p-1 {thread.id === currentThreadId
 								? 'bg-secondary'
 								: 'bg-primary'}"
 						/>

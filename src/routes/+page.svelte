@@ -12,7 +12,8 @@
 This UI library is based on
 <div class="flex flex-col gap-2 p-4">
 	<li>Svelte 5</li>
-	<li>DaisyUI 4</li>
+	<li>DaisyUI 5</li>
+	<li>Tailwind CSS 4</li>
 	<li>Free Fontawesome Icons</li>
 	<li>@floating-ui/dom</li>
 	<li>date-fns</li>
@@ -21,7 +22,7 @@ This UI library is based on
 
 <ComponentPageHeader title="Purpose" level="2"></ComponentPageHeader>
 We built this library because at the time of creation there were no libraries that supported Svelte 5,
-DaisyUI as well as all needed Forms Inputs.
+DaisyUI 5 as well as all needed Forms Inputs.
 
 <ComponentPageHeader title="License" level="2"></ComponentPageHeader>
 MIT
