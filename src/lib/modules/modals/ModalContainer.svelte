@@ -112,6 +112,8 @@
 </dialog>
 
 <style>
+	@reference "tailwindcss/theme";
+
 	:root:has(:is(.modal-open, .modal:target, .modal-toggle:checked + .modal, .modal[open])) {
 		overflow: hidden;
 		scrollbar-gutter: unset !important;

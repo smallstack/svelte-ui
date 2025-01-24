@@ -56,6 +56,8 @@
 </div>
 
 <style>
+	@reference "tailwindcss/theme";
+
 	:global {
 		.menu-entry:hover {
 			@apply rounded-md cursor-pointer;
