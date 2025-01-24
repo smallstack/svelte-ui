@@ -18,8 +18,8 @@
 	import TabBar from "./TabBar.svelte";
 
 	let defaults: AppShellOptions = {
-		bgColor: "oklch(var(--p))",
-		textColor: "oklch(var(--pc))",
+		bgColor: "var(--color-primary)",
+		textColor: "var(--color-primary-content)",
 		navbar: {
 			show: true,
 			showNavigation: false,

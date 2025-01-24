@@ -5,8 +5,8 @@
 	import TabBar from "$lib/modules/navigation/TabBar.svelte";
 
 	let example: AppShellTabBarOptions = {
-		bgColor: "oklch(var(--p))",
-		textColor: "oklch(var(--pc))",
+		bgColor: "var(--color-primary)",
+		textColor: "var(--color-primary-color)",
 		navigation: {
 			entries: [
 				{ icon: "fas fa-home", text: "Home", link: "/" },
