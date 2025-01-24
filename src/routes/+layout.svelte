@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.js";
+	import ModalContainer from "$lib/modules/modals/ModalContainer.svelte";
+import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.js";
 	import AppShell from "$lib/modules/navigation/AppShell.svelte";
 	import { BREAKPOINTS, MD_AND_UP } from "$lib/modules/navigation/breakpoint.service.svelte.js";
 	import type { Navigation } from "$lib/modules/navigation/navigation.js";
@@ -193,3 +194,4 @@
 		<slot></slot>
 	</div>
 </AppShell>
+<ModalContainer></ModalContainer>
