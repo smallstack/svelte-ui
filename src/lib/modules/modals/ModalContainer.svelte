@@ -55,8 +55,8 @@
 
 <dialog class="modal modal-bottom sm:modal-middle" use:setDialog>
 	<div class="modal-box">
-		<div class="dialog">
-			<div class="dialog-title flex flex-row gap-2 place-items-center">
+		<div class="sui-dialog">
+			<div class="sui-dialog-title flex flex-row gap-2 place-items-center">
 				{#if previousModal}
 					<div class="tooltip tooltip-right" data-tip="Zurück zu {previousModal.options.title}">
 						<button class="btn btn-xs bg-transparent btn-square" onclick={() => modalStack.pop()}>
@@ -80,7 +80,7 @@
 				</div>
 			</div>
 			<div class="divider divide-gray-400 -ml-6 -mr-6 my-0"></div>
-			<div class="dialog-body">
+			<div class="sui-dialog-body">
 				<!-- it does not work for e.g. widget tree json as modal -->
 				<!-- svelte-ignore svelte_component_deprecated -->
 				{#each modalStack as modal}
@@ -90,7 +90,7 @@
 					>
 						<svelte:component this={modal.component} {...modal.options?.data} />
 						{#if modal.options?.buttons}
-							<div class="dialog-actions">
+							<div class="sui-dialog-actions">
 								{#each modal.options.buttons as button}
 									<button
 										class="btn btn-{button.color}"
