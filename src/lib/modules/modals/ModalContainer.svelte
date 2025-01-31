@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount, type Component } from "svelte";
 	import { fly } from "svelte/transition";
-	import { modalService, type ModalOptions } from "./modal.service.svelte";
 	import { asyncHandler } from "../utils";
+	import { modalService, type ModalOptions } from "./modal.service.svelte";
 
 	interface ModalStackItem {
 		component: Component;
@@ -28,7 +28,7 @@
 		};
 	}
 
-	export function showModal(component: Component, options: ModalOptions) {
+	export function showModal(component: Component, options: ModalOptions): void {
 		if (options?.closingPropName) {
 			if (!options.data) options.data = {};
 			options.data[options.closingPropName] = (data: any) => {
@@ -39,7 +39,7 @@
 		dialog.showModal();
 	}
 
-	export function closeModal(data?: any) {
+	export function closeModal(data?: any): void {
 		if (typeof currentModal?.options?.closeDialog === "function")
 			currentModal.options.closeDialog(data);
 		modalStack.pop();
@@ -112,31 +112,8 @@
 </dialog>
 
 <style>
-	@reference "tailwindcss/theme";
-
 	:root:has(:is(.modal-open, .modal:target, .modal-toggle:checked + .modal, .modal[open])) {
 		overflow: hidden;
 		scrollbar-gutter: unset !important;
-	}
-
-	:global {
-		.dialog {
-			@apply flex flex-col gap-4;
-			height: 100%;
-		}
-
-		.dialog-title {
-			@apply text-3xl;
-		}
-
-		.dialog-body {
-			@apply text-base;
-			height: 100%;
-			overflow: auto;
-		}
-
-		.dialog-actions {
-			@apply flex flex-row justify-end gap-2;
-		}
 	}
 </style>

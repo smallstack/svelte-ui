@@ -43,7 +43,7 @@
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="input input-bordered relative h-[360px] w-full px-0">
+<div class="input input-bordered relative h-[360px] w-full px-0 cursor-pointer">
 	<div class="absolute bottom-24 left-4 right-4 border-t border-dotted border-gray-300"></div>
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div

@@ -54,7 +54,7 @@ class ModalService {
 		}
 	}
 
-	public openSimpleModal(options: SimpleModalOptions) {
+	public openSimpleModal(options: SimpleModalOptions): void {
 		if (!this.modalComponent) alert(options.title + ": " + options.message);
 		else {
 			if (!options.buttons) options.buttons = [ModalOkBtn];
@@ -62,10 +62,10 @@ class ModalService {
 		}
 	}
 
-	public async openModal<RETURN_TYPE = any>(
+	public openModal<RETURN_TYPE = any>(
 		component: Component,
 		options?: ModalOptions<RETURN_TYPE>
-	): Promise<void> {
+	): void {
 		this.modalComponent.showModal(component, options);
 	}
 

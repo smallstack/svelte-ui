@@ -35,9 +35,29 @@
 </ComponentCode>
 
 <ComponentPlayground>
-	<button onclick={() => modalService.openModal(First, { title: "Hello World" })}>
+	<button
+		class="btn btn-primary"
+		onclick={() =>
+			modalService.openModal(First, {
+				title: "Hello World",
+				buttons: [
+					{
+						color: "primary",
+						text: "Close",
+						onClick: async ({ closeModal }) => closeModal()
+					}
+				]
+			})}
+	>
 		Open Modal
 	</button>
+
+	<div class="dialog w-96 border">
+		<div class="dialog-title">Modal Service Playground</div>
+		<div class="dialog-actions">
+			<button class="btn btn-primary">test</button>
+		</div>
+	</div>
 </ComponentPlayground>
 
 <ComponentPageHeader
@@ -45,9 +65,9 @@
 	description="You can play around with the modal service in the playground below."
 	level="2"
 ></ComponentPageHeader>
-<iframe
+<!-- <iframe
 	title="Simple Modal"
 	src="https://svelte.dev/playground/e621d2a127494438859bde7a35226606?version=5.2.7"
 	width="100%"
 	height="800px"
-></iframe>
+></iframe> -->
