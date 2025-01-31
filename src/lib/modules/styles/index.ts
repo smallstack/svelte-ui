@@ -9,7 +9,7 @@ export default plugin(({ addComponents }) => {
 			"@apply text-3xl": {}
 		},
 		".sui-dialog-body": {
-			"@apply text-base h-full overflow-auto": {}
+			"@apply text-base h-full overflow-auto p-1 -m-1": {}
 		},
 		".sui-dialog-actions": {
 			"@apply flex flex-row justify-end gap-2": {}

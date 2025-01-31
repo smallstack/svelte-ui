@@ -12,7 +12,8 @@
 			de: {
 				translation: {
 					navigation: {
-						about: "Über"
+						about: "Über",
+						install: "Installation"
 					},
 					actions: {
 						clear: "Leeren"
@@ -23,7 +24,7 @@
 				translation: {
 					navigation: {
 						about: "About",
-						gettingStarted: "Getting Started"
+						install: "Installation"
 					},
 					actions: {
 						clear: "Clear"
@@ -38,14 +39,13 @@
 			{
 				text: "Getting Started",
 				icon: "fas fa-home",
-				link: "/",
 				entries: [
 					{
 						text: { de: "Über", en: "About" },
 						link: "/"
 					},
 					{
-						text: "navigation.gettingStarted",
+						text: "navigation.install",
 						link: "/install"
 					}
 				]
