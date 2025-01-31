@@ -7,7 +7,7 @@
 
 <p>{message}</p>
 
-<div class="dialog-actions">
+<div class="sui-dialog-actions">
 	{#each buttons as button}
 		<button
 			class="btn btn-{button.color}"

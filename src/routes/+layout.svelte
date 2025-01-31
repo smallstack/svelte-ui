@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ModalContainer from "$lib/modules/modals/ModalContainer.svelte";
-import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.js";
+	import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.js";
 	import AppShell from "$lib/modules/navigation/AppShell.svelte";
 	import { BREAKPOINTS, MD_AND_UP } from "$lib/modules/navigation/breakpoint.service.svelte.js";
 	import type { Navigation } from "$lib/modules/navigation/navigation.js";
@@ -12,7 +12,8 @@ import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.
 			de: {
 				translation: {
 					navigation: {
-						about: "Über"
+						about: "Über",
+						install: "Installation"
 					},
 					actions: {
 						clear: "Leeren"
@@ -23,7 +24,7 @@ import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.
 				translation: {
 					navigation: {
 						about: "About",
-						gettingStarted: "Getting Started"
+						install: "Installation"
 					},
 					actions: {
 						clear: "Clear"
@@ -38,14 +39,13 @@ import { type AppShellOptions } from "$lib/modules/navigation/app-shell-options.
 			{
 				text: "Getting Started",
 				icon: "fas fa-home",
-				link: "/",
 				entries: [
 					{
 						text: { de: "Über", en: "About" },
 						link: "/"
 					},
 					{
-						text: "navigation.gettingStarted",
+						text: "navigation.install",
 						link: "/install"
 					}
 				]

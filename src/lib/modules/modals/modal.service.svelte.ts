@@ -1,4 +1,4 @@
-import type { Component } from "svelte";
+import type { Component, Snippet } from "svelte";
 import SimpleModal from "./SimpleModal.svelte";
 
 export interface ModalButton {
@@ -42,31 +42,41 @@ export interface ModalOptions<RETURN_TYPE = any> {
 }
 
 export interface ModalComponent {
-	showModal: (component: Component, options?: ModalOptions) => void;
+	showModal: (component: Component | Snippet, options?: ModalOptions) => Promise<void>;
 	closeModal: (data?: any) => void;
 }
 class ModalService {
 	private modalComponent: ModalComponent;
+	private storedModals: { component: Component | Snippet; options: ModalOptions }[] = [];
 
 	public registerModalContainer(modalComponent: ModalComponent) {
 		if (!this.modalComponent) {
 			this.modalComponent = modalComponent;
+
+			if (this.storedModals.length > 0)
+				this.storedModals.forEach(({ component, options }) => {
+					this.openModal(component, options);
+				});
 		}
 	}
 
-	public openSimpleModal(options: SimpleModalOptions) {
+	public async openSimpleModal(options: SimpleModalOptions): Promise<void> {
 		if (!this.modalComponent) alert(options.title + ": " + options.message);
 		else {
 			if (!options.buttons) options.buttons = [ModalOkBtn];
-			this.openModal(SimpleModal, { data: options, title: options.title });
+			await this.openModal(SimpleModal, { data: options, title: options.title });
 		}
 	}
 
 	public async openModal<RETURN_TYPE = any>(
-		component: Component,
+		component: Component | Snippet,
 		options?: ModalOptions<RETURN_TYPE>
 	): Promise<void> {
-		this.modalComponent.showModal(component, options);
+		if (!this.modalComponent) {
+			this.storedModals.push({ component, options });
+		} else {
+			await this.modalComponent.showModal(component, options);
+		}
 	}
 
 	/** closes the currently opened modal */
