@@ -60,7 +60,7 @@
 </script>
 
 <dialog class="modal modal-bottom sm:modal-middle" use:setDialog>
-	<div class="modal-box">
+	<div class="modal-box {currentModal?.options?.modalClass || ''}">
 		<div class="sui-dialog">
 			{#if previousModal || currentModal?.options?.title}
 				<div class="sui-dialog-title flex flex-row gap-2 place-items-center">

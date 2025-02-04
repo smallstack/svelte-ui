@@ -39,6 +39,7 @@ export interface ModalOptions<RETURN_TYPE = any> {
 	/** if set, the given prop will automatically passed to the component as the closing function */
 	closingPropName?: string;
 	buttons?: ModalButton[];
+	modalClass?: string;
 }
 
 export interface ModalComponent {
