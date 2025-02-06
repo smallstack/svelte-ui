@@ -1,3 +1,13 @@
+<svelte:options
+	customElement={{
+		tag: "sui-signature-pad-input",
+		shadow: "none",
+		props: {
+			signature: { type: "String", reflect: true }
+		}
+	}}
+/>
+
 <script lang="ts">
 	import { t } from "$lib/stores/i18n.store";
 	import { onMount } from "svelte";
