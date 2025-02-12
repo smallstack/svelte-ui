@@ -17,3 +17,4 @@ updates:
           - "vitest"
     assignees:
       - "maxfriedmann"
+    versioning-strategy: increase
