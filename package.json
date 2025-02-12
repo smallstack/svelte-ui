@@ -130,7 +130,7 @@
 		"jsdom": "^26.0.0",
 		"perfect-freehand": "^1.2.2",
 		"pulltorefreshjs": "^0.1.22",
-		"svelte": "^5.19.5",
+		"svelte": "^5.20.0",
 		"svelte-i18next": "^2.2.2"
 	},
 	"volta": {
