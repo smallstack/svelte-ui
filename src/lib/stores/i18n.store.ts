@@ -59,6 +59,11 @@ export type InlineTranslation = {
 	[locale: string]: string;
 };
 
+export interface Translatable {
+	key: string;
+	replacers?: Record<string, string>;
+}
+
 export const currentLanguage = writable("de");
 i18nNext.on("languageChanged", (lng) => {
 	const formattedLanguage = lng.split("-")[0];
@@ -85,15 +90,27 @@ export const it = derived(currentLanguage, () => translateInlineTranslation);
 
 /** based on the input either inline translations or keys are getting translated */
 export const t = derived(currentLanguage, (currentLanguage: string) => {
-	return (key: string | InlineTranslation, options?: Record<string, unknown>) => {
+	return (key: string | InlineTranslation | Translatable, options?: Record<string, unknown>) => {
 		if (typeof key === "string") return i18nNext.t(key, options);
-		return translateInlineTranslation(key, { language: currentLanguage });
+		else if (isTranslatable(key))
+			return i18nNext.t(key.key, {
+				...options,
+				...key.replacers
+			});
+		else return translateInlineTranslation(key, { language: currentLanguage });
 	};
 });
 
-export function isInlineTranslation(obj: InlineTranslation): obj is InlineTranslation {
+export function isInlineTranslation(obj: any): obj is InlineTranslation {
 	if (!(obj instanceof Object)) return false;
 	for (const [key, value] of Object.entries(obj))
 		if (typeof key !== "string" || typeof value !== "string") return false;
+	return true;
+}
+
+export function isTranslatable(obj: any): obj is Translatable {
+	if (!(obj instanceof Object)) return false;
+	if (typeof obj.key !== "string") return false;
+	if (obj.replacers && !(obj.replacers instanceof Object)) return false;
 	return true;
 }
