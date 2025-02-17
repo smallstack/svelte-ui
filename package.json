@@ -126,7 +126,7 @@
 		"@tailwindcss/vite": "^4.0.1",
 		"date-fns": "^4.1.0",
 		"i18next": "^24.2.0",
-		"i18next-browser-languagedetector": "^8.0.0",
+		"i18next-browser-languagedetector": "^8.0.3",
 		"jsdom": "^26.0.0",
 		"perfect-freehand": "^1.2.2",
 		"pulltorefreshjs": "^0.1.22",
