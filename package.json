@@ -1,6 +1,6 @@
 {
 	"name": "@smallstack/svelte-ui",
-	"version": "0.5.3",
+	"version": "0.5.4",
 	"description": "Tiny library for Svelte 5 and DaisyUI, published as multi entry ESM module and as web components.",
 	"author": {
 		"name": "smallstack GmbH",
