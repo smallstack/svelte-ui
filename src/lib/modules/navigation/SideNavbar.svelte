@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="pt-12 p-2 flex flex-col gap-4"
+	class="pt-12 p-2 flex flex-col gap-4 h-full overflow-auto"
 	style="background-color: {options?.bgColor}; color: {options?.textColor}; width:{options.width ||
 		200}px; --navbarTextColor: {options?.textColor};"
 >
