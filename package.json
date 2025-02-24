@@ -88,7 +88,7 @@
 	],
 	"devDependencies": {
 		"@codecov/sveltekit-plugin": "^1.7.0",
-		"@fetch-mock/vitest": "^0.2.6",
+		"@fetch-mock/vitest": "^0.2.10",
 		"@playwright/test": "^1.49.1",
 		"@sveltejs/adapter-vercel": "^5.5.2",
 		"@sveltejs/package": "^2.3.7",
