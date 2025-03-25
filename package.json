@@ -114,7 +114,7 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.7.2",
 		"typescript-eslint": "^8.19.1",
-		"vite": "^6.0.7",
+		"vite": "^6.2.3",
 		"vitest": "3.0.7"
 	},
 	"types": "./dist/index.d.ts",
